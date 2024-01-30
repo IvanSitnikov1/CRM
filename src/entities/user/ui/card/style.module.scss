@@ -13,7 +13,9 @@
     height: 50px;
     border-radius: 50%;
     overflow: hidden;
-    margin: 0 auto 16px;
+  }
+  &__circle {
+    margin-bottom: 16px;
   }
   &__image {
     width: 100%;

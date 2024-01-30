@@ -1,0 +1,43 @@
+@keyframes filling {
+  from {
+    stroke-dashoffset: v-bind("dashArray");
+  }
+  to {
+    stroke-dashoffset: v-bind("dashOffset");
+  }
+}
+
+.circle-progress {
+  display: flex;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  &__circle {
+    fill: transparent;
+    stroke-width: 2px;
+  }
+  &__line--back {
+    stroke: #7D859234;
+    stroke-dashoffset: 0;
+  }
+  &__line--top {
+    animation-name: filling;
+    animation-duration: .5s;
+    animation-timing-function: ease-in;
+    transition: 0.5s all;
+  }
+  &__content {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  &__line--unfilled {
+    stroke: #00addf;
+  }
+}
