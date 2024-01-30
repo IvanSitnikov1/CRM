@@ -1,0 +1,12 @@
+.events {
+  display: flex;
+  column-gap: 20px;
+  padding: 0 calc(max((100% - 1400px) / 2, 10px));
+  overflow: auto;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  &__title {
+    padding: 0 22px;
+  }
+}

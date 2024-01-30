@@ -1,0 +1,25 @@
+.fab-content {
+  &__list {
+    padding-left: 32px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 16px;
+    color: #0A1629;
+    font-size: 16px;
+    line-height: 150%
+  }
+  &__element {
+    display: flex;
+    column-gap: 20px;
+    align-items: center;
+  }
+  &__image-container {
+    width: 44px;
+    height: 44px;
+    border-radius: 16px;
+    background-color: #F4F9FD;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}

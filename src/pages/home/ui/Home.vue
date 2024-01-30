@@ -1,0 +1,93 @@
+<template>
+
+
+  <section class="home-page">
+    <div class="wrapper wrapper_title wrapper_small-margin home-page__welcome-text">Welcome back, Evan!</div>
+    <h1 class="wrapper wrapper_title title">Dashboard</h1>
+    <div class="wrapper">
+      <div class="calendar-input">
+        <div class="calendar-input__image">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M7 3C7 2.44772 7.44772 2 8 2C8.55228 2 9 2.44772 9 3V4H15V3C15 2.44772 15.4477 2 16 2C16.5523 2 17 2.44772 17 3V4C19.2091 4 21 5.79086 21 8V18C21 20.2091 19.2091 22 17 22H7C4.79086 22 3 20.2091 3 18V8C3 5.79086 4.79086 4 7 4V3ZM15 6C15 6.55228 15.4477 7 16 7C16.5523 7 17 6.55228 17 6L17.1493 6.00549C18.1841 6.08183 19 6.94564 19 8V9H5V8L5.00549 7.85074C5.08183 6.81588 5.94564 6 7 6C7 6.55228 7.44772 7 8 7C8.55228 7 9 6.55228 9 6H15ZM19 11H5V18C5 19.0544 5.81588 19.9182 6.85074 19.9945L7 20H17C18.0544 20 18.9182 19.1841 18.9945 18.1493L19 18V11Z" fill="#0A1629"/>
+          </svg>
+        </div>
+        <time class="calender__date">
+          Nov 16, 2020 - Dec 16, 2020
+        </time>
+      </div>
+    </div>
+    <Workload />
+    <Projects />
+    <Events />
+    <History />
+  </section>
+</template>
+
+<script setup lang="ts">
+import { useHead } from '@unhead/vue'
+import { Workload } from '@/widgets/workload'
+import { History } from '@/widgets/history'
+import { Projects } from '@/widgets/projects'
+import { Events } from '@/widgets/events'
+
+useHead({
+  title: 'Polka - Search book'
+})
+
+
+/*onBeforeUnmount(() => {
+  bookModel.$reset()
+})*/
+</script>
+
+<style scoped lang="scss">
+.tag-time {
+  display: flex;
+  column-gap: 4px;
+  background-color: #F4F9FD;
+  border-radius: 8px;
+  align-items: center;
+  padding: 8px;
+}
+.home-page {
+  &__welcome-text {
+    color: #7D8592;
+    font-size: 16px;
+  }
+}
+.calendar-input {
+  display: flex;
+  column-gap: 16px;
+  align-items: center;
+  border-radius: 14px;
+  background: #E6EDF5;
+  padding: 12px 16px;
+  &__date {
+    color: #0A1629;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 150%
+  }
+}
+.tag {
+  padding: 4px;
+  color: #7D8592;
+  border-radius: 4px;
+  border: 1px solid #7D8592;
+  font-size: 12px;
+  font-style: normal;
+  width: max-content;
+  margin: 0 auto;
+  font-weight: 600;
+}
+.status {
+  display: flex;
+  align-items: center;
+  column-gap: 4px;
+  &__text {
+    color: #FFBD21;
+    font-weight: 700;
+    line-height: 120%;
+  }
+}
+</style>

@@ -1,0 +1,18 @@
+.workload {
+  border-radius: 24px;
+  background: #FFF;
+  padding: 20px 10px 10px;
+  box-shadow: 0 6px 58px 0 rgba(196, 203, 214, 0.10);
+  &__header {
+    padding: 0 12px;
+    margin-bottom: 16px;
+  }
+  &__employees {
+    display: grid;
+    width: 100%;
+    grid-template-columns: repeat(auto-fit, minmax(145px, 1fr));
+    grid-template-rows: repeat(auto-fit, minmax(180px, 1fr));
+    grid-gap: 10px;
+    align-items: start;
+  }
+}

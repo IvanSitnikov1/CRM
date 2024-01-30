@@ -1,0 +1,27 @@
+.title {
+  color: #0A1629;
+  font-size: 22px;
+  font-weight: 700;
+  &_size {
+    &-small {
+      font-size: 16px;
+    }
+    &-medium {
+      font-size: 18px;
+    }
+  }
+  &_margin {
+    &-small {
+      margin-bottom: 10px;
+    }
+    &-medium {
+      margin-bottom: 20px;
+    }
+    &-large {
+      margin-bottom: 30px;
+    }
+  }
+  &_line-height {
+    line-height: 150%;
+  }
+}

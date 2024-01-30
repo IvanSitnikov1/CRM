@@ -1,0 +1,49 @@
+.project {
+  border-radius: 24px;
+  background: #FFF;
+  padding: 20px;
+  box-shadow: 0 6px 58px 0 rgba(196, 203, 214, 0.10);
+  &__header {
+    margin-bottom: 20px;
+    display: flex;
+    column-gap: 20px;
+    align-items: center;
+  }
+  &__index {
+    margin-bottom: 4px;
+  }
+  &__overview {
+    display: flex;
+    justify-content: space-between;
+  }
+  &__info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+  }
+  &__date {
+    display: flex;
+    align-items: center;
+    column-gap: 4px;
+  }
+  &__column-name {
+    margin-bottom: 4px;
+  }
+  &__column-data {
+    color: #0A1629;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 150%
+  }
+  &__line {
+    border: none;
+    height: 2px;
+    background-color: #E4E6E8;
+    color: #E4E6E8;
+    margin-bottom: 24px;
+  }
+  &__title {
+    margin-bottom: 16px;
+  }
+}
