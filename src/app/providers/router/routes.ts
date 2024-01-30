@@ -1,5 +1,3 @@
-import { HomeLayout } from '@/widgets/home-layout/'
-
 export const routes = [
   {
     path: '/',

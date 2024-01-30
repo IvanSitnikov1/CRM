@@ -1,5 +1,5 @@
-import UICalendar from './ui/UICalendar.vue'
+import DataPiker from './ui/DataPicker.vue'
 
 /*export { getAuthorsWithComma, getEmptyImage, toggleItemInLocalStorage } from './lib'*/
-export { UICalendar }
+export { DataPiker }
 export { type ILink } from './model/types'

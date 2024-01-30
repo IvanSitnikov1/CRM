@@ -1,14 +1,14 @@
 <template>
   <section class="calendar-page">
     <div class="wrapper">
-      <UICalendar data=""/>
+      <DataPiker data=""/>
     </div>
   </section>
 </template>
 
 <script setup lang="ts">
 import { useHead } from '@unhead/vue'
-import { UICalendar } from '@/shared/ui/calendar'
+import { DataPiker } from '@/shared/ui/data-picker'
 
 useHead({
   title: 'Polka - Search book'
