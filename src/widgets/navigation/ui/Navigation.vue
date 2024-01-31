@@ -26,7 +26,6 @@
             </button>
           </div>
         </div>
-
       </aside>
     </transition>
   </teleport>

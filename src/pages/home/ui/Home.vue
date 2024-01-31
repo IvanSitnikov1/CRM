@@ -40,7 +40,7 @@ useHead({
 })*/
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
 .tag-time {
   display: flex;
   column-gap: 4px;
@@ -68,17 +68,6 @@ useHead({
     font-weight: 400;
     line-height: 150%
   }
-}
-.tag {
-  padding: 4px;
-  color: #7D8592;
-  border-radius: 4px;
-  border: 1px solid #7D8592;
-  font-size: 12px;
-  font-style: normal;
-  width: max-content;
-  margin: 0 auto;
-  font-weight: 600;
 }
 .status {
   display: flex;

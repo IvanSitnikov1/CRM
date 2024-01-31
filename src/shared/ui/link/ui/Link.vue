@@ -11,7 +11,7 @@
 </template>
 
 <script setup lang="ts">
-import { type ILink } from '../../link'
+import { type ILink } from './../index'
 
 const props = defineProps<{
   data: ILink

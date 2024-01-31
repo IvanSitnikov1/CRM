@@ -16,9 +16,9 @@
     <div class="employer-card__job">
       UI/UX Designer
     </div>
-    <div class="tag">
-      Middle
-    </div>
+    <Tag class="employer-card__tag" :data="{
+      text: 'Middle'
+    }"/>
   </article>
 </template>
 
@@ -26,6 +26,7 @@
 import { type IBook } from 'src/entities/user'
 import { CircleProgressBar } from '@/shared/ui/circle-progress-bar'
 import { Title } from '@/shared/ui/title'
+import { Tag } from '@/shared/ui/tag'
 
 const props = defineProps<{
   data: IBook

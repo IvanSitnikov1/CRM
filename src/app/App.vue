@@ -1,9 +1,11 @@
 <template>
   <Panel />
   <main>
-    <transition name="page">
-      <router-view />
-    </transition>
+    <router-view v-slot="{ Component }">
+      <transition name="page">
+        <component :is="Component" />
+      </transition>
+    </router-view>
   </main>
   <ActionPlus />
   <Navigation />
