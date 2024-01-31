@@ -1,5 +1,5 @@
 <template>
-  <button class="button">
+  <button class="button" :type="data.type">
     <img src="../../../assets/icons/support.svg" alt="Left Icon">
     <span class="button__text">
       {{ data.title }}
@@ -8,10 +8,10 @@
 </template>
 
 <script setup lang="ts">
-import { type ILink } from '../../link'
+import { type IButton } from './../index'
 
   const props = defineProps<{
-    data: ILink
+    data: IButton
   }>()
 </script>
 

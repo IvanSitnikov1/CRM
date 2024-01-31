@@ -1,0 +1,20 @@
+.textarea {
+  &__label {
+    display: block;
+    margin: 0 0 8px 4px;
+  }
+  &__text {
+    width: 100%;
+    box-sizing: border-box;
+    max-width: 600px;
+    border-radius: 14px;
+    border: 1px solid #D8E0F0;
+    box-shadow: 0 1px 2px 0 rgba(184, 200, 224, 0.22);
+    resize: none;
+    padding: 12px 20px;
+    &:focus-visible {
+      outline-color: #3F8CFF;
+    }
+  }
+
+}

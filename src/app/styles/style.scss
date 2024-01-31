@@ -43,15 +43,3 @@ input {
     outline-color: #27AE60;
   }
 }
-
-.textarea {
-  width: 100%;
-  max-width: 600px;
-  border-radius: 6px;
-  border: 1px solid #DDD;
-  resize: none;
-  padding: 24px 30px;
-  &:focus-visible {
-    outline-color: #27AE60;
-  }
-}

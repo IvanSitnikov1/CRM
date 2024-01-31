@@ -1,4 +1,4 @@
-export interface ILink {
-  text?: string
-  isFullWidth?: string
+export interface IButton {
+  title?: string
+  type?: 'submit' | 'button' | 'reset'
 }

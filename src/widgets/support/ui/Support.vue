@@ -4,11 +4,20 @@
     open: app.showSupport
   }">
     <template #content>
-      <div class="support">
+      <form class="support">
         <p class="support__text">
           Describe your question and our specialists will answer you within 24 hours.
         </p>
-      </div>
+        <UiTextArea class="support__textarea" :data="{
+          name: 'problem',
+          title: 'Description',
+          placeholder: 'Add some description of the request'
+        }"/>
+        <UiButton :data="{
+          title: 'Send request',
+          type: 'submit'
+        }"/>
+      </form>
     </template>
   </PopUp>
 </template>
@@ -19,6 +28,8 @@ const router = useRouter()
 
 import { useAppModel } from '@/entities/app'
 import { PopUp } from '@/entities/popup'
+import { UiTextArea } from '@/shared/ui/textarea'
+import { UiButton } from '@/shared/ui/button'
 
 const app = useAppModel()
 
