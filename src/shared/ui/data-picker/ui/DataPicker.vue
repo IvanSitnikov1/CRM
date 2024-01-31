@@ -55,8 +55,8 @@ import { Title } from '@/shared/ui/title';
 import { Calendar, DateInfo } from "./../index";
 
 const calendar = reactive(new Calendar());
-const curentDates = ref(calendar.getCalendar());
-const curentMonth = ref(calendar.getCurrentMonth());
+const curentDates = computed(() => calendar.getCalendar());
+const curentMonth = computed(() => calendar.getCurrentMonth());
 
 const getDateClasses = (date: DateInfo) => {
   return {
@@ -70,14 +70,6 @@ const getDateClasses = (date: DateInfo) => {
 const props = defineProps<{
   data: ILink
 }>()
-
-watch(() => calendar.getCalendar(), (newDates) => {
-  curentDates.value = newDates;
-});
-
-watch(() => calendar.getCurrentMonth(), (newMonth) => {
-  curentMonth.value = newMonth;
-});
 
 </script>
 

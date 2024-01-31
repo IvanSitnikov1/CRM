@@ -10,6 +10,7 @@
   <ActionPlus />
   <Navigation />
   <FabBottomSheet />
+  <Support />
 </template>
 
 <script setup lang="ts">
@@ -19,6 +20,8 @@ import { Panel } from '@/widgets/panel'
 import { Navigation } from '@/widgets/navigation'
 import { FabBottomSheet } from '@/widgets/fab'
 import { ActionPlus } from '@/features/action-plus'
+import { PopUp } from '@/entities/popup'
+import { Support } from '@/widgets/support'
 
 const route = useRoute()
 

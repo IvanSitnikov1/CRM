@@ -57,7 +57,7 @@ export class Calendar {
           isPrevMonth: !isSameMonth(currentDate, this.currentDate) && currentDate < firstDayOfMonth,
           isCurrentMonth: isSameMonth(currentDate, this.currentDate),
           isNextMonth: !isSameMonth(currentDate, this.currentDate) && currentDate > lastDayOfMonth,
-          isSelected: false, // You can set this based on your selection logic
+          isSelected: false,
         };
 
         week.push(dateInfo);
@@ -71,6 +71,6 @@ export class Calendar {
   }
 
   getCurrentMonth(): string {
-    return format(this.currentDate, 'MMMM yyyy');
+    return format(this.currentDate, 'MMMM, yyyy');
   }
 }

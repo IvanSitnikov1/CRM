@@ -16,9 +16,12 @@
               </li>
             </ul>
           </nav>
-          <UiButton class="navigation__button" :data="{
-            title: 'Support'
-          }" />
+          <UiButton class="navigation__button"
+                    @click="showSupport"
+                    :data="{
+                      title: 'Support'
+                    }"
+          />
           <div class="navigation__logout">
             <img src="@/shared/assets/icons/logout.svg" alt="Log out">
             <button class="navigation__button_logout">
@@ -47,6 +50,11 @@ const app = useAppModel()
 const closeNavigation = () => {
   app.updateShowMenu(false)
 };
+
+const showSupport = () => {
+  app.updateShowMenu(false)
+  app.updateShowSupport(true)
+}
 </script>
 
 

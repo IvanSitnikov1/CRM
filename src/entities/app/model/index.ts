@@ -8,6 +8,7 @@ export const useAppModel = defineStore({
     <IBookModel>{
       showNavigation: false,
       showFab: false,
+      showSupport: false,
     },
 
   getters: {
@@ -27,6 +28,9 @@ export const useAppModel = defineStore({
     },
     updateShowFab(value: boolean): void {
       this.showFab = value;
+    },
+    updateShowSupport(value: boolean): void {
+      this.showSupport = value;
     },
   }
 })
