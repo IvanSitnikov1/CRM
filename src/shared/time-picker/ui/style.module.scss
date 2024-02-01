@@ -1,12 +1,13 @@
 .select-wrap {
   position: relative;
-  // top: 200px;
   height: 300px;
-  // perspective: 1200px;
   text-align: center;
   overflow: hidden;
   font-size: 20px;
-  color: #ddd;
+  flex-grow: 1;
+  font-weight: 600;
+  color: #202860;
+
   &:before, &:after {
     position: absolute;
     z-index: 1;
@@ -17,11 +18,11 @@
   }
   &:before {
     top: 0;
-    background-image: linear-gradient(to bottom, rgba(1, 1, 1, 0.5), rgba(1, 1, 1, 0));
+    background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0));
   }
   &:after {
     bottom: 0;
-    background-image: linear-gradient(to top, rgba(1, 1, 1, 0.5), rgba(1, 1, 1, 0));
+    background-image: linear-gradient(to top, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0));
   }
 
   .select-options {
@@ -59,37 +60,15 @@
   top: 50%;
   transform: translate(0, -50%);
   width: 100%;
-  background-color: #000;
-  border-top: 1px solid #333;
-  border-bottom: 1px solid #333;
+  background-color: white;
+  border-top: 1px solid #C8C7CC;
+  border-bottom: 1px solid #C8C7CC;
   font-size: 24px;
   overflow: hidden;
 }
 .highlight-list {
-  // display: none;
   position: absolute;
   width: 100%;
 }
 
-
-/* date */
-.date-selector {
-  perspective: 2000px;
-  display: flex;
-  align-items: stretch;
-  justify-content: space-between;
-
-  max-width: 600px;
-  width: 100%;
-  height: 300px;
-
-
-  .select-wrap {
-    font-size: 18px;
-    flex: 1;
-  }
-  .highlight {
-    font-size: 20px;
-  }
-}
 

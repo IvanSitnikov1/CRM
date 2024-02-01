@@ -1,7 +1,7 @@
 <template>
-  <div class="date-selector">
       <article class="select-wrap"
                v-if="source.length"
+               :key="i"
                @touchstart.prevent="handleTouchStart"
                @touchmove.prevent="handleTouchMove"
                @touchend.prevent="handleTouchEnd">
@@ -27,7 +27,6 @@
           <ul class="highlight-list"
               :style="`top: -${itemHeight}px; transform: translate3d(0, ${-store.scroll * itemHeight}px, 0);`">
             <li
-              v-if="type === 'infinite'"
               class="highlight-item"
               :style="`height: ${itemHeight}px`"
             >
@@ -42,7 +41,6 @@
               {{ item.text }}
             </li>
             <li
-              v-if="type === 'infinite'"
               class="highlight-item"
               :style="`height: ${itemHeight}px;`"
             >
@@ -51,7 +49,6 @@
           </ul>
         </div>
       </article>
-  </div>
 </template>
 
 <script setup>
@@ -69,12 +66,10 @@ const count = 20
 const sensitivity = 0.8
 
 const source = generateHours();
-const type = 'infinite';
 const itemHeight = 40;
 const itemAngle = 360 / source.length;
 const radius = itemHeight / Math.tan((itemAngle * Math.PI) / 180);
 const a = sensitivity * 10;
-const halfCount = count / 2;
 const quarterCount = count / 4;
 
 const isWithinRange = (index) => {
@@ -100,7 +95,6 @@ const handleTouchStart = (e) => {
 const handleTouchMove = (e) => {
   const eventY = e.clientY || e.touches[0].clientY;
   store.touchData.yArr.push([eventY, new Date().getTime()]);
-
   const scrollAdd = (store.touchData.startY - eventY) / itemHeight;
   const moveToScroll = scrollAdd + store.scroll;
   store.scroll = normalizeScroll(moveToScroll);
@@ -124,11 +118,7 @@ const handleTouchEnd = () => {
 };
 // If you have more logic for the component, you can add it here
 const store = reactive({
-  halfCount: 0,
-  quarterCount: 0,
-  minV: 0,
   selected: null,
-  exceedA: 10,
   moveT: 0,
   touchData: {
     startY: 0,
@@ -138,26 +128,6 @@ const store = reactive({
   moving: false,
   scroll: 0,
 });
-
-const init = () => {
-  // Call the _init method with props.options and other properties from store
-  // ...
-};
-
-const touchmove = (e, touchData) => {
-  // Call the _touchmove method with props.options and other properties from store
-  // ...
-};
-
-const touchend = (e, touchData) => {
-  // Call the _touchend method with props.options and other properties from store
-  // ...
-};
-
-const create = (source) => {
-  // Call the _create method with props.options and other properties from store
-  // ...
-};
 
 const normalizeScroll = (scroll) => {
   let normalizedScroll = scroll;
@@ -216,20 +186,10 @@ const selectByScroll = (scroll) => {
   // ...
 };
 
-const updateSource = (source) => {
-  // Call the updateSource method with props.options and other properties from store
-  // ...
-};
-
 const select = (value) => {
   // Call the select method with props.options and other properties from store
   // ...
 };
-
-onMounted(() => {
-  store.scroll = 0;
-  init();
-});
 </script>
 
 <style lang="scss">
