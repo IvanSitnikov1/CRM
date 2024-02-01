@@ -3,10 +3,12 @@
   height: 300px;
   text-align: center;
   overflow: hidden;
-  font-size: 20px;
   flex-grow: 1;
   font-weight: 600;
-  color: #202860;
+  color: rgb(32, 40, 96);
+  font-size: 22px;
+  line-height: 27px;
+  letter-spacing: -0.19px;
 
   &:before, &:after {
     position: absolute;

@@ -1,7 +1,6 @@
 <template>
       <article class="select-wrap"
                v-if="source.length"
-               :key="i"
                @touchstart.prevent="handleTouchStart"
                @touchmove.prevent="handleTouchMove"
                @touchend.prevent="handleTouchEnd">

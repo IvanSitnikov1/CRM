@@ -1,29 +1,24 @@
 <template>
-  <section class="calendar-page">
-    <div class="wrapper">
-      <DataPiker :data="{}"/>
-      <PopUp :data="{
+  <section class="projects-page">
+    <PopUp :data="{
         open: true,
         title: 'time',
       }">
-        <template #content>
-          <div class="date-selector">
-            <TimePicker />
-            <TimePicker />
-          </div>
-        </template>
-      </PopUp>
-
-    </div>
+      <template #content>
+        <div class="date-selector">
+          <TimePicker />
+          <TimePicker />
+        </div>
+      </template>
+    </PopUp>
   </section>
 </template>
 
 <script setup lang="ts">
 import { useHead } from '@unhead/vue'
-import { DataPiker } from '@/shared/ui/data-picker'
-import { UiSelect } from 'src/shared/time-picker'
 import { TimePicker } from '@/shared/time-picker'
 import { PopUp } from '@/entities/popup'
+import { Calendar } from '@/widgets/calendar'
 
 useHead({
   title: 'Polka - Search book'
