@@ -1,0 +1,32 @@
+.employee-card {
+  background-color: white;
+  padding: 24px 20px;
+  &_border {
+    border-radius: 24px;
+  }
+  &_shadow {
+    box-shadow: 0 6px 58px 0 rgba(196, 203, 214, 0.1);
+  }
+  &__line {
+    margin-top: 20px;
+    &_no-line {
+      display: none;
+    }
+  }
+  &__header {
+    display: flex;
+    column-gap: 20px;
+    align-items: center;
+  }
+  &__profile {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    overflow: hidden;
+  }
+  &__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}

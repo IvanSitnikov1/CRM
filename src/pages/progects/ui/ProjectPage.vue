@@ -6,8 +6,24 @@
       }">
       <template #content>
         <div class="date-selector">
-          <TimePicker />
-          <TimePicker />
+          <TimePicker
+            :data="{
+              source: generateHours(),
+              count: 20,
+              sensitivity: 0.8,
+              value: currentHour
+            }"
+            @onChange="console.log($event)"
+          />
+          <TimePicker
+            :data="{
+              source: generateMinutes(),
+              count: 20,
+              sensitivity: 0.8,
+              value: currentMinute
+            }"
+            @onChange="console.log($event)"
+          />
         </div>
       </template>
     </PopUp>
@@ -27,13 +43,24 @@ useHead({
   title: 'Projects'
 })
 
+const generateHours = () => new Array(23).fill(1).map((v, i) => {
+  return { value: i + 1, text: i + 1}
+});
+
+const  generateMinutes = () => new Array(60).fill(1).map((v, i) => {
+ return { value: i + 1, text: i + 1}
+});
+
+const currentHour = new Date().getHours();
+const currentMinute = new Date().getMinutes();
+
 
 /*onBeforeUnmount(() => {
   bookModel.$reset()
 })*/
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
 .date-selector {
   perspective: 2000px;
   display: flex;
@@ -41,8 +68,5 @@ useHead({
   justify-content: space-between;
   max-width: 600px;
   width: 100%;
-  .highlight {
-    font-size: 20px;
-  }
 }
 </style>

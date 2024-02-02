@@ -1,15 +1,15 @@
 <template>
-      <article class="select-wrap"
-               v-if="source.length"
+      <article class="ios-select__select-wrap"
+               v-if="props.data.source.length"
                @touchstart.prevent="handleTouchStart"
                @touchmove.prevent="handleTouchMove"
                @touchend.prevent="handleTouchEnd">
-        <ul class="select-options"
+        <ul class="ios-select__select-options"
             :style="`transform: translate3d(0, 0, ${-radius}px) rotateX(${itemAngle * store.scroll}deg);`">
           <li
-            v-for="(item, index) in source"
+            v-for="(item, index) in props.data.source"
             :key="index"
-            class="select-option"
+            class="ios-select__select-option"
             :style="`top: ${itemHeight * -0.5}px;
                 height: ${itemHeight}px;
                 line-height: ${itemHeight}px;
@@ -20,59 +20,69 @@
             {{ item.text }}
           </li>
         </ul>
-        <div class="highlight"
+        <div class="ios-select__highlight"
              :style="`height: ${itemHeight}px;
                  line-height: ${itemHeight}px;`">
-          <ul class="highlight-list"
+          <ul class="ios-select__highlight-list"
               :style="`top: -${itemHeight}px; transform: translate3d(0, ${-store.scroll * itemHeight}px, 0);`">
             <li
-              class="highlight-item"
+              class="ios-select__highlight-item"
               :style="`height: ${itemHeight}px`"
             >
-              {{ source[source.length - 1].text }}
+              {{ props.data.source[props.data.source.length - 1].text }}
             </li>
             <li
-              v-for="(item, index) in source"
+              v-for="(item, index) in props.data.source"
               :key="index"
-              class="highlight-item"
+              class="ios-select__highlight-item"
               :style="`height: ${itemHeight}px;`"
             >
               {{ item.text }}
             </li>
             <li
-              class="highlight-item"
+              class="ios-select__highlight-item"
               :style="`height: ${itemHeight}px;`"
             >
-              {{ source[0].text }}
+              {{ props.data.source[0].text }}
             </li>
           </ul>
         </div>
       </article>
 </template>
 
-<script setup>
+<script setup lang="ts">
+import type { IIosSelect } from './../index'
 
 const easing = {
   easeOutCubic: (pos) => Math.pow(pos - 1, 3) + 1,
   easeOutQuart: (pos) => -(Math.pow(pos - 1, 4) - 1),
 };
 
-const generateHours = () => new Array(24).fill(1).map((v, i) => {
-  return { value: i + 1, text: i + 1}
-});
-// todo props
-const count = 20
-const sensitivity = 0.8
+const emit = defineEmits(['onChange'])
 
-const source = generateHours();
+const props = defineProps<{
+  data: IIosSelect
+}>()
+
 const itemHeight = 40;
-const itemAngle = 360 / source.length;
+const itemAngle = 360 / props.data.source.length;
 const radius = itemHeight / Math.tan((itemAngle * Math.PI) / 180);
-const a = sensitivity * 10;
-const quarterCount = count / 4;
+const a = props.data.sensitivity * 10;
+const quarterCount = props.data.count / 4;
 
+const store = reactive({
+  selected: null,
+  moveT: 0,
+  touchData: {
+    startY: 0,
+    yArr: [],
+    touchScroll: 0,
+  },
+  moving: false,
+  scroll: 0,
+});
 const isWithinRange = (index) => {
-  const sourceLength = source.length;
+  const sourceLength = props.data.source.length;
   const distanceToScroll = Math.abs(index - store.scroll);
   const distanceToScrollEnd = Math.abs(index - store.scroll - sourceLength);
   const distanceToScrollBeginning = Math.abs(index - store.scroll + sourceLength);
@@ -90,13 +100,11 @@ const handleTouchStart = (e) => {
   store.touchData.touchScroll = store.scroll;
   stop();
 };
-
 const handleTouchMove = (e) => {
   const eventY = e.clientY || e.touches[0].clientY;
   store.touchData.yArr.push([eventY, new Date().getTime()]);
   const scrollAdd = (store.touchData.startY - eventY) / (itemHeight * 20);
   const moveToScroll = scrollAdd + store.scroll;
-  console.log(moveToScroll)
   store.scroll = normalizeScroll(moveToScroll);
   store.touchData.touchScroll = normalizeScroll(moveToScroll);
 };
@@ -116,28 +124,14 @@ const handleTouchEnd = () => {
   store.scroll = store.touchData.touchScroll;
   animateMoveByInitV(-v)
 };
-// If you have more logic for the component, you can add it here
-const store = reactive({
-  selected: null,
-  moveT: 0,
-  touchData: {
-    startY: 0,
-    yArr: [],
-    touchScroll: 0,
-  },
-  moving: false,
-  scroll: 0,
-});
-
 const normalizeScroll = (scroll) => {
   let normalizedScroll = scroll;
 
   while (normalizedScroll < 0) {
-    normalizedScroll += source.length;
+    normalizedScroll += props.data.source.length;
   }
-  return normalizedScroll % source.length;
+  return normalizedScroll % props.data.source.length;
 };
-
 const animateMoveByInitV = async (initV) => {
   const acceleration = initV > 0 ? -a : a; // Deceleration or acceleration
   const time = Math.abs(initV / acceleration); // Time to reduce speed to 0
@@ -145,9 +139,8 @@ const animateMoveByInitV = async (initV) => {
   const finalScroll = Math.round(store.scroll + totalScrollLen); // Round to ensure final scroll is an integer
 
   await animateToScroll(store.scroll, finalScroll, time, 'easeOutQuart');
- /* selectByScroll(store.scroll);*/
+  selectByScroll(store.scroll);
 };
-
 const animateToScroll = (initScroll, finalScroll, time, easingName = "easeOutQuart") => {
   if (initScroll === finalScroll || time === 0) {
     return;
@@ -174,21 +167,35 @@ const animateToScroll = (initScroll, finalScroll, time, easingName = "easeOutQua
     tick();
   });
 };
-
 const stop = () => {
   store.moving = false
   cancelAnimationFrame(store.moveT);
 };
-
 const selectByScroll = (scroll) => {
-  // Call the _selectByScroll method with props.options and other properties from store
-  // ...
+  store.selected = props.data.source[scroll];
+  emit('onChange', store.selected.value)
+};
+const select = (value) => {
+  if (!value) {
+    return
+  }
+  for (let i = 0; i < props.data.source.length; i++) {
+    if (props.data.source[i].value === value) {
+      cancelAnimationFrame(store.moveT);
+      const initScroll = normalizeScroll(store.scroll);
+      const finalScroll = i;
+      const time = Math.sqrt(Math.abs((finalScroll - initScroll) / a));
+      animateToScroll(initScroll, finalScroll, time);
+      selectByScroll(i);
+      return;
+    }
+  }
+  throw new Error(
+    `can not select value: ${value}, ${value} match nothing in current props.data.source`
+  );
 };
 
-const select = (value) => {
-  // Call the select method with props.options and other properties from store
-  // ...
-};
+onMounted(() => select(props.data.value))
 </script>
 
 <style lang="scss">
