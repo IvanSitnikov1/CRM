@@ -3,7 +3,9 @@
 
   <section class="home-page">
     <div class="wrapper wrapper_title wrapper_small-margin home-page__welcome-text">Welcome back, Evan!</div>
-    <h1 class="wrapper wrapper_title title">Dashboard</h1>
+    <Header class="wrapper wrapper_title" :data="{
+      title: 'Dashboard'
+    }"/>
     <div class="wrapper">
       <div class="calendar-input">
         <div class="calendar-input__image">
@@ -29,6 +31,7 @@ import { Workload } from '@/widgets/workload'
 import { History } from '@/widgets/history'
 import { Projects } from '@/widgets/projects'
 import { Events } from '@/widgets/events'
+import { Header } from '@/shared/ui/header'
 
 useHead({
   title: 'Polka - Search book'

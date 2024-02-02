@@ -11,17 +11,20 @@
         </div>
       </template>
     </PopUp>
+    <Header class="wrapper wrapper_title" :data="{
+      title: 'Projects'
+    }"/>
   </section>
 </template>
 
 <script setup lang="ts">
 import { useHead } from '@unhead/vue'
-import { TimePicker } from '@/shared/time-picker'
+import { TimePicker } from '@/shared/ui/time-picker'
 import { PopUp } from '@/entities/popup'
-import { Calendar } from '@/widgets/calendar'
+import { Header } from '@/shared/ui/header'
 
 useHead({
-  title: 'Polka - Search book'
+  title: 'Projects'
 })
 
 

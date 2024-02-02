@@ -1,25 +1,16 @@
 <template>
   <section class="calendar-page">
-    <PopUp :data="{
-        open: false,
-        title: 'time',
-      }">
-      <template #content>
-        <div class="date-selector">
-          <TimePicker />
-          <TimePicker />
-        </div>
-      </template>
-    </PopUp>
+    <Header class="wrapper wrapper_title" :data="{
+      title: 'Dashboard'
+    }"/>
     <Calendar />
   </section>
 </template>
 
 <script setup lang="ts">
 import { useHead } from '@unhead/vue'
-import { TimePicker } from '@/shared/time-picker'
-import { PopUp } from '@/entities/popup'
 import { Calendar } from '@/widgets/calendar'
+import { Header } from '@/shared/ui/header'
 
 useHead({
   title: 'Polka - Search book'

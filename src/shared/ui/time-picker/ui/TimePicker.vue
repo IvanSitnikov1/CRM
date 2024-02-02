@@ -94,8 +94,9 @@ const handleTouchStart = (e) => {
 const handleTouchMove = (e) => {
   const eventY = e.clientY || e.touches[0].clientY;
   store.touchData.yArr.push([eventY, new Date().getTime()]);
-  const scrollAdd = (store.touchData.startY - eventY) / itemHeight;
+  const scrollAdd = (store.touchData.startY - eventY) / (itemHeight * 20);
   const moveToScroll = scrollAdd + store.scroll;
+  console.log(moveToScroll)
   store.scroll = normalizeScroll(moveToScroll);
   store.touchData.touchScroll = normalizeScroll(moveToScroll);
 };
@@ -113,7 +114,7 @@ const handleTouchEnd = () => {
     v = Math.min(Math.abs(v), 30) * Math.sign(v); // Ensure v is within the range [-30, 30]
   }
   store.scroll = store.touchData.touchScroll;
-  animateMoveByInitV(v)
+  animateMoveByInitV(-v)
 };
 // If you have more logic for the component, you can add it here
 const store = reactive({
@@ -144,7 +145,7 @@ const animateMoveByInitV = async (initV) => {
   const finalScroll = Math.round(store.scroll + totalScrollLen); // Round to ensure final scroll is an integer
 
   await animateToScroll(store.scroll, finalScroll, time, 'easeOutQuart');
- /* this._selectByScroll(store.scroll);*/
+ /* selectByScroll(store.scroll);*/
 };
 
 const animateToScroll = (initScroll, finalScroll, time, easingName = "easeOutQuart") => {
@@ -160,7 +161,6 @@ const animateToScroll = (initScroll, finalScroll, time, easingName = "easeOutQua
     store.moving = true;
     const tick = () => {
       pass = new Date().getTime() / 1000 - startTime;
-
       if (pass < time) {
         const progress = pass / time;
         store.scroll = normalizeScroll(initScroll + easing[easingName](progress) * totalScrollLen);
