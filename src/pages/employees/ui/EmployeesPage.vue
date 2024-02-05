@@ -9,7 +9,7 @@
           <RecycleScroller
             class="employees-page__employees"
             :items="list"
-            :item-size="290"
+            :item-size="288"
             :page-mode="true"
             key-field="id"
             v-slot="{ item }"
@@ -56,7 +56,39 @@
           </RecycleScroller>
         </template>
         <template #Activity>
-          <p>This is the content for Tab 1.</p>
+          <RecycleScroller
+            class="employees-page__employees"
+            :items="list"
+            :item-size="344"
+            :page-mode="true"
+            key-field="id"
+            v-slot="{ item }"
+          >
+            <Card :data="{
+            isBox: true,
+            image: 'https://cdn.tripster.ru/thumbs2/f5a8c1fe-b128-11ed-9e63-2e5ef03bee8d.1220x600.jpeg',
+            }">
+              <template #content>
+                <div class="employees-page__task">
+                  <div class="employees-page__column employees-page__column_center">
+                    <div class="employees-page__date employees-page__date_big">0</div>
+                    <div class="employees-page__about">Backlog
+                      tasks</div>
+                  </div>
+                  <div class="employees-page__column employees-page__column_center">
+                    <div class="employees-page__date employees-page__date_big">16</div>
+                    <div class="employees-page__about">Tasks
+                      In Progress</div>
+                  </div>
+                  <div class="employees-page__column employees-page__column_center">
+                    <div class="employees-page__date employees-page__date_big">6</div>
+                    <div class="employees-page__about">Tasks
+                      In Review</div>
+                  </div>
+                </div>
+              </template>
+            </Card>
+          </RecycleScroller>
         </template>
       </Tabs>
     </div>
@@ -69,12 +101,13 @@ import { Header } from '@/shared/ui/header'
 import { CardEmployee } from '@/entities/employee'
 import { Tag } from '@/shared/ui/tag'
 import { Tabs } from '@/shared/ui/tabs'
+import { Card } from '@/entities/user'
 
 useHead({
   title: 'Employees'
 })
 
-const generateHours = () => new Array(70).fill(1).map((v, i) => {
+const generateHours = () => new Array(700).fill(1).map((v, i) => {
   return { id: i + 1, text: i + 1}
 })
 
@@ -103,16 +136,30 @@ const list = generateHours();
     font-size: 16px;
     color: rgb(10, 22, 41);
     line-height: 150%;
+    &_big {
+      font-size: 26px;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
   }
   &__position {
     display: flex;
     column-gap: 12px;
     align-items: center;
   }
+  &__column {
+    &_center {
+      text-align: center;
+    }
+  }
   &__description {
     color: rgb(10, 22, 41);
     font-size: 16px;
     line-height: 150%;
+  }
+  &__task {
+    display: flex;
+    justify-content: space-around;
   }
 }
 </style>

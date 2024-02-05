@@ -1,24 +1,34 @@
 <template>
-  <article class="employer-card" v-for="index in 2" :key="index">
-    <CircleProgressBar class="employer-card__circle" :data="{
+  <article class="employer-card"
+           :key="index"
+           :class="{'employer-card_box': props.data.isBox}"
+  >
+    <div class="employer-card__about">
+      <CircleProgressBar class="employer-card__circle" :data="{
       size: 64,
       value: 23,
       max: 66,
     }">
-      <div class="employer-card__avatar" >
-        <img class="employer-card__image" :src="image" alt="avatar">
-      </div>
-    </CircleProgressBar>
-    <Title :data="{
+        <div class="employer-card__avatar" >
+          <img class="employer-card__image" :src="image" alt="avatar">
+        </div>
+      </CircleProgressBar>
+      <Title :data="{
       size: 'small',
       title: 'Shawn Stone'
     }"/>
-    <div class="employer-card__job">
-      UI/UX Designer
-    </div>
-    <Tag class="employer-card__tag" :data="{
+      <div class="employer-card__job">
+        UI/UX Designer
+      </div>
+      <Tag class="employer-card__tag" :data="{
       text: 'Middle'
     }"/>
+    </div>
+    <div class="employer-card__add">
+      <slot name="content">
+
+      </slot>
+    </div>
   </article>
 </template>
 

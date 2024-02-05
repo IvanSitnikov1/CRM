@@ -38,11 +38,6 @@
 
 <script setup lang="ts">
 import { useRouter } from 'vue-router'
-import { Card } from '@/entities/user'
-import Link from '@/shared/ui/link/Link.vue'
-import { TitleWithLink } from '@/entities/grop-title'
-import CardProject from '@/entities/project/ui/card/CardProject.vue'
-import CardEvent from '@/entities/event/ui/card/CardEvent.vue'
 import { Title } from '@/shared/ui/title'
 
 const router = useRouter()

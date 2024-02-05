@@ -7,7 +7,7 @@ export interface IBookModel {
 
 export interface IBook {
   id?: string | null
-  title?: string
+  isBox?: string
   image?: string
   description?: string
   authors?: string[]
