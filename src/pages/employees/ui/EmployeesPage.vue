@@ -78,7 +78,7 @@ const isLocked = useScrollLock(document.body)
 
 isLocked.value = true;
 
-const generateHours = () => new Array(700).fill(1).map((v, i) => {
+const generateHours = () => new Array(70).fill(1).map((v, i) => {
   return { id: i + 1, text: i + 1}
 })
 
@@ -92,7 +92,8 @@ const list = generateHours();
 <style lang="scss">
 .employees-page {
   &__employees {
-    height: 100vh;
+    height: calc(100vh - 270px);
+    margin-bottom: 52px;
   }
   &__info {
     display: flex;
