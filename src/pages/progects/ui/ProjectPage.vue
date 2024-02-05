@@ -19,7 +19,7 @@
             :data="{
               source: generateMinutes(),
               count: 20,
-              sensitivity: 0.8,
+              sensitivity: 0.6,
               value: currentMinute
             }"
             @onChange="console.log($event)"

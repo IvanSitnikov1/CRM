@@ -17,6 +17,10 @@ export const routes = [
     component: () => import('@/pages/vacations'),
   },
   {
+    path: '/employees',
+    component: () => import('@/pages/employees'),
+  },
+  {
     path: '/:pathMatch(.*)',
     component: () => import('@/pages/not-found'),
   }

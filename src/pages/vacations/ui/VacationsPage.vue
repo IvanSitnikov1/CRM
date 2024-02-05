@@ -65,6 +65,7 @@ useHead({
   }
   &__info {
     display: flex;
+    margin-top: 24px;
     justify-content: space-between;
   }
   &__title {

@@ -1,6 +1,7 @@
 <template>
       <article class="ios-select__select-wrap"
                v-if="props.data.source.length"
+               ref="selectWrapRef"
                @touchstart.prevent="handleTouchStart"
                @touchmove.prevent="handleTouchMove"
                @touchend.prevent="handleTouchEnd">
@@ -58,13 +59,16 @@ const easing = {
   easeOutQuart: (pos) => -(Math.pow(pos - 1, 4) - 1),
 };
 
+const selectWrapRef = ref<HTMLElement | null>(null)
+
 const emit = defineEmits(['onChange'])
 
 const props = defineProps<{
   data: IIosSelect
 }>()
 
-const itemHeight = 40;
+console.log(selectWrapRef.value)
+const itemHeight = 900 / props.data.count;
 const itemAngle = 360 / props.data.source.length;
 const radius = itemHeight / Math.tan((itemAngle * Math.PI) / 180);
 const a = props.data.sensitivity * 10;
