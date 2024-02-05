@@ -80,9 +80,12 @@
       </div>
     </div>
     <hr class="project__line">
-    <div class="header header_size-midll header_line-height project__title">
-      Project Data
-    </div>
+    <Title :data="{
+      title: 'Project Data',
+      size: 'small',
+      marginBottom: 'medium',
+      isHighLeading: true
+    }"/>
     <div class="project__overview">
       <div class="project__all-tasks">
         <div class="project__column-name">
