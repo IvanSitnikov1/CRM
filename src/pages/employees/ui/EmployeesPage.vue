@@ -10,6 +10,7 @@
             class="employees-page__employees"
             :items="list"
             :item-size="290"
+            :page-mode="true"
             key-field="id"
             v-slot="{ item }"
           >
@@ -67,16 +68,11 @@ import { useHead } from '@unhead/vue'
 import { Header } from '@/shared/ui/header'
 import { CardEmployee } from '@/entities/employee'
 import { Tag } from '@/shared/ui/tag'
-import { useScrollLock } from '@vueuse/core'
 import { Tabs } from '@/shared/ui/tabs'
 
 useHead({
   title: 'Employees'
 })
-
-const isLocked = useScrollLock(document.body)
-
-isLocked.value = true;
 
 const generateHours = () => new Array(70).fill(1).map((v, i) => {
   return { id: i + 1, text: i + 1}
@@ -92,7 +88,7 @@ const list = generateHours();
 <style lang="scss">
 .employees-page {
   &__employees {
-    height: calc(100vh - 270px);
+    height: 100%;
     margin-bottom: 52px;
   }
   &__info {
