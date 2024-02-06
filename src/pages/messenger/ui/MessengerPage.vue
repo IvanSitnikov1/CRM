@@ -113,6 +113,7 @@ import { Title } from '@/shared/ui/title'
     border-radius: 24px;
     box-shadow: 0 6px 58px 0 rgba(196, 203, 214, 0.1);
     background-color: rgb(255, 255, 255);
+    margin-bottom: 52px;
   }
   &__messages {
     display: flex;
