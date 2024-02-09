@@ -12,7 +12,8 @@
       }">
         <template #content>
           <div class="workload__employees">
-            <Card :data="{
+            <button @click="testHandler">test</button>
+            <Card v-for="index in 6" :key="index" :data="{
             image: 'https://cdn.tripster.ru/thumbs2/f5a8c1fe-b128-11ed-9e63-2e5ef03bee8d.1220x600.jpeg',
           }"/>
           </div>
@@ -26,8 +27,19 @@
 import { useRouter } from 'vue-router'
 import { Card } from '@/entities/user'
 import { TitleWithLink } from '@/entities/grop-title'
+import { http } from "@/shared/api";
 
 const router = useRouter()
+
+const testHandler = async () => {
+  try {
+    const response = await http.get('http://localhost:3000/users');
+    console.log(response)
+  } catch (error) {
+    console.error('Error submitting form:', error);
+  }
+};
+
 const goToHome = () => {
   router.push({ path: '/' })
 }

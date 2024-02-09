@@ -59,7 +59,7 @@
           <RecycleScroller
             class="employees-page__employees"
             :items="list"
-            :item-size="344"
+            :item-size="312"
             :page-mode="true"
             key-field="id"
             v-slot="{ item }"
