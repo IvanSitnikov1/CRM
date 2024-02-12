@@ -64,12 +64,12 @@
 import { router } from "@/app/providers";
 import { http } from "@/shared/api";
 import { Title } from "@/shared/ui/title";
-import { useLocalStorage } from '@vueuse/core';
 import { UIInput } from "@/shared/ui/input";
 import { UiButton } from "@/shared/ui/button";
 import Link from "@/shared/ui/link/ui/Link.vue";
 import ArrowRightLongIcon from "@/shared/assets/icons/arrowRightLong.vue";
 import { accessTokenLocalStorage, refreshTokenLocalStorage } from "@/shared/lib/ustils/isAutorise";
+import { useCustomWebNotification } from "@/shared/lib/ustils/notification";
 
 const state = reactive({
   fromData: {
@@ -91,9 +91,19 @@ const submitForm = async () => {
   }
 };
 
+const { isSupported, show: showNotification } = useCustomWebNotification();
+
 const handlerCreateUser = () => {
   accessTokenLocalStorage.value = 'test user'
   refreshTokenLocalStorage.value = 'test token'
+  if (isSupported.value) {
+    // Customize and show the notification
+    showNotification({
+      title: 'Custom Notification',
+      body: 'Create Test User!',
+    });
+  }
+
   router.push({ path: '/' })
 }
 
