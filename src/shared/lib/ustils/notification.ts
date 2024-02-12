@@ -23,6 +23,8 @@ export const useCustomWebNotification = (options = {}) => {
     onShow,
     onError,
     onClose,
+    ensurePermissions,
+    permissionGranted
   } = useWebNotification({ ...defaultOptions, ...options });
 
   return {
@@ -31,6 +33,8 @@ export const useCustomWebNotification = (options = {}) => {
     show,
     close,
     onClick,
+    ensurePermissions,
+    permissionGranted,
     onShow,
     onError,
     onClose,

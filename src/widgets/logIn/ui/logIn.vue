@@ -59,7 +59,7 @@
   </div>
   <PopUp :data="{
     title: 'Allow notification?',
-    open: isSupported
+    open: isSupported && !permissionGranted && state.chose
   }">
     <template #content>
       <div class="login__pop-up">
@@ -67,12 +67,17 @@
                   :data="{
                     type: 'button',
                     title: 'Yes'
-                  }"/>
+                  }"
+                  @click="handlerPermission(true)"
+        />
         <UiButton class="login__choise"
                   :data="{
                      type: 'button',
                      title: 'No'
-                   }"/>
+                   }"
+                  @click="handlerPermission(false)"
+        />
+
       </div>
 
     </template>
@@ -98,7 +103,8 @@ const state = reactive({
     email: '',
     password: '',
     agent: navigator.userAgent
-  }
+  },
+  chose: true,
 })
 const submitForm = async () => {
   try {
@@ -113,7 +119,8 @@ const submitForm = async () => {
   }
 };
 
-const { isSupported, show: showNotification } = useCustomWebNotification();
+
+const { isSupported, show: showNotification, permissionGranted  } = useCustomWebNotification();
 
 const handlerCreateUser = () => {
   accessTokenLocalStorage.value = 'test user'
@@ -131,6 +138,15 @@ const handlerCreateUser = () => {
 
 const handlerEmail = (event: string) => {
   state.fromData.email = event
+}
+
+const handlerPermission = (value: boolean) => {
+  if(value) {
+    alert('Пока не работает')
+  } else {
+    state.chose = false;
+  }
+
 }
 
 const handlerPassword = (event: string) => {
