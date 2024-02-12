@@ -18,7 +18,7 @@
         @click="calendar.goToPreviousMonth()"
       >
       <img
-        src="@/shared/assets/icons/arrowRightLong.svg"
+        src="../../../assets/icons/arrowRightLong.vue"
         alt="arrow"
         class="date-picker__arrow_right"
         @click="calendar.goToNextMonth()"

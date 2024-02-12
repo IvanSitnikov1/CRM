@@ -1,14 +1,23 @@
 .button {
   height: 48px;
   display: flex;
-  color: white;
   border-color: transparent;
   border-radius: 14px;
   background-color: #3F8CFF;
+  color: white; // todo: Поправить потом
   padding: 0 20px 0 16px;
   box-shadow: 0 6px 12px 0 rgba(63, 140, 255, 0.26);
   align-items: center;
   column-gap: 8px;
   width: max-content;
   justify-content: center;
+  &_full {
+    width: 100%;
+  }
+  &__text {
+    color: rgb(255, 255, 255);
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 150%;
+  }
 }

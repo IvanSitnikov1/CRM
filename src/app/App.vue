@@ -1,9 +1,14 @@
 <template>
-  <section class="login" v-if="!isAuthenticated">
-    <div class="login__logo">
-      <img src="" alt="logo" class="login__image">
+  <section class="no-auth" v-if="!isAuthenticated">
+    <div class="wrapper">
+      <aside class="no-auth__header">
+        <div class="no-auth__logo">
+          <img src="@/shared/assets/icons/logo.svg" alt="logo" class="login__image">
+        </div>
+        <span class="no-auth__title">CRM</span>
+      </aside>
     </div>
-    <main class="login__content">
+    <main class="no-auth__content">
       <router-view v-slot="{ Component }">
         <transition name="page" mode="out-in">
           <component :is="Component" />
@@ -45,4 +50,20 @@ const route = useRoute()
 
 <style lang="scss">
   @import 'index.scss';
+
+  .no-auth {
+    margin-top: 56px;
+    &__header {
+      display: flex;
+      align-items: center;
+      column-gap: 16px;
+      justify-content: center;
+    }
+    &__title {
+      color: rgb(58, 137, 255);
+      font-size: 20px;
+      font-weight: 700;
+      line-height: 150%;
+    }
+  }
 </style>

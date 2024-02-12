@@ -1,0 +1,30 @@
+.input {
+  width: 100%;
+  max-width: 600px;
+  box-sizing: border-box;
+  padding: 12px 18px;
+  display: flex;
+  border: 1px solid rgb(216, 224, 240);
+  border-radius: 14px;
+  box-shadow: 0 1px 2px 0 rgba(184, 200, 224, 0.22);
+  background-color: rgb(255, 255, 255);
+  &__label {
+    margin-bottom: 8px;
+    display: block;
+    font-weight: 700;
+    line-height: 150%;
+  }
+  &__text {
+    outline-color: transparent;
+    border-color: transparent;
+    color: rgb(125, 133, 146);
+    flex-grow: 1;
+    &::placeholder {
+      color: rgb(125, 133, 146);
+      line-height: 150%;
+    }
+  }
+  &__icon {
+    flex-shrink: 0;
+  }
+}

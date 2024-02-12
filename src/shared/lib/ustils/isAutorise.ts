@@ -1,3 +1,5 @@
-import { ref, onMounted } from 'vue';
+import { useLocalStorage } from '@vueuse/core';
 
-export const isAuthenticated = ref(localStorage.getItem('token') !== null);
+const accessToken = useLocalStorage<string>('token', null);
+export const isAuthenticated = computed(() => !!accessToken.value);
+

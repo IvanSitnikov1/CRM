@@ -6,8 +6,15 @@
       isHighLeading: data.title?.isHighLeading,
       size: 'large'
     }"/>
+    <div class="title-with-link__link">
+      <Link :data="data.link"/>
+      <IconBase :data="{
+        iconName: 'arrow'
+      }">
+        <ArrowRightIcon />
+      </IconBase>
+    </div>
 
-    <Link :data="data.link"/>
   </article>
   <slot name="content"/>
 </template>
@@ -16,6 +23,8 @@
 import { type ITitleWithLink } from 'src/entities/grop-title'
 import Link from '@/shared/ui/link/ui/Link.vue'
 import { Title } from '@/shared/ui/title'
+import IconBase from "@/shared/ui/icon-base/ui/IconBase.vue";
+import ArrowRightIcon from "@/shared/assets/icons/arrowRight.vue";
 
 const props = defineProps<{
   data: ITitleWithLink

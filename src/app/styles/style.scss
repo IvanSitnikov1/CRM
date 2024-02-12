@@ -38,14 +38,3 @@ input {
 .page-leave-to {
   opacity: 0;
 }
-
-.input {
-  width: 100%;
-  max-width: 600px;
-  border-radius: 6px;
-  border: 1px solid #DDD;
-  padding: 24px 30px;
-  &:focus-visible {
-    outline-color: #27AE60;
-  }
-}

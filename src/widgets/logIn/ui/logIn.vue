@@ -1,36 +1,60 @@
 <template>
   <div class="wrapper">
-    <section class="screen">
-      <div class="screen__content">
-        <form class="login" @submit.prevent="submitForm">
-          <div class="login__field">
-            <i class="login__icon fas fa-user"></i>
-            <input type="text" class="login__input" v-model="state.fromData.email" name="email" placeholder="User name / Email">
+    <section class="login">
+        <Title class="login__title" :data="{
+          title: 'Sign In to CRM',
+          size: 'medium',
+          isHighLeading: true,
+          marginBottom: 'medium'
+        }"/>
+        <form class="login__form" @submit.prevent="submitForm">
+          <UIInput class="login__email"
+                   @onInput="handlerEmail"
+                   :data="{
+                      title: 'Email Address',
+                      name: 'email',
+                      type: 'email',
+                      placeholder: 'youremail@gmail.com',
+                      value: state.fromData.email
+                   }"/>
+          <UIInput class="login__password"
+                   @onInput="handlerPassword"
+                   :data="{
+                      title: 'Password',
+                      name: 'password',
+                      type: 'password',
+                      placeholder: '••••••••',
+                      value: state.fromData.password,
+                      iconName: 'eye'
+                    }">
+            <template #icon>
+              <arrow-right-long-icon/>
+            </template>
+          </UIInput>
+          <div class="login__action">
+            <button class="login__reset" type="reset">
+              Reset All Field
+            </button>
+
+            <router-link to="/forgot" class="login__forgot">
+                Forgot Password?
+            </router-link>
           </div>
-          <div class="login__field">
-            <i class="login__icon fas fa-lock"></i>
-            <input type="password" class="login__input" v-model="state.fromData.password"  name="password" placeholder="Password">
-          </div>
-          <button class="button login__submit">
-            <span class="button__text">Log In Now</span>
-            <i class="button__icon fas fa-chevron-right"></i>
-          </button>
+          <UiButton class="login__button" :data="{
+            title: 'Sign In',
+            type: 'submit',
+            iconNameRight: 'Arrow Right',
+            isFull: true
+          }">
+            <template #icon-right>
+              <arrow-right-long-icon/>
+            </template>
+          </UiButton>
+          <Link @click="handlerCreateUser" class="login__link" :data="{
+            title: 'Don’t have an account?',
+            to: '/'
+          }"/>
         </form>
-        <div class="social-login">
-          <h3>log in via</h3>
-          <div class="social-icons">
-            <a href="#" class="social-login__icon fab fa-instagram"></a>
-            <a href="#" class="social-login__icon fab fa-facebook"></a>
-            <a href="#" class="social-login__icon fab fa-twitter"></a>
-          </div>
-        </div>
-      </div>
-      <div class="screen__background">
-        <span class="screen__background__shape screen__background__shape4"></span>
-        <span class="screen__background__shape screen__background__shape3"></span>
-        <span class="screen__background__shape screen__background__shape2"></span>
-        <span class="screen__background__shape screen__background__shape1"></span>
-      </div>
     </section>
   </div>
 </template>
@@ -39,6 +63,12 @@
 
 import { router } from "@/app/providers";
 import { http } from "@/shared/api";
+import { Title } from "@/shared/ui/title";
+import { useLocalStorage } from '@vueuse/core';
+import { UIInput } from "@/shared/ui/input";
+import { UiButton } from "@/shared/ui/button";
+import Link from "@/shared/ui/link/ui/Link.vue";
+import ArrowRightLongIcon from "@/shared/assets/icons/arrowRightLong.vue";
 
 const state = reactive({
   fromData: {
@@ -51,12 +81,27 @@ const submitForm = async () => {
   try {
     const response = await http.post('http://localhost:3000/auth/logIn', state.fromData);
     const accessToken = response.data.accessToken;
-    localStorage.setItem('token', accessToken);
+    const refreshToken = response.data.refreshToken;
+    useLocalStorage('token', accessToken);
+    useLocalStorage('refreshToken', refreshToken);
     await router.push({ path: '/' })
   } catch (error) {
     console.error('Error submitting form:', error);
   }
 };
+
+const handlerCreateUser = () => {
+  useLocalStorage('token', 'test user');
+  router.push({ path: '/' })
+}
+
+const handlerEmail = (event: string) => {
+  state.fromData.email = event
+}
+
+const handlerPassword = (event: string) => {
+  state.fromData.password = event
+}
 </script>
 
 

@@ -6,7 +6,6 @@
       :to="data.to">
       {{ data.title }}
     </router-link >
-    <img src="@/shared/assets/icons/arrowRight.svg" alt="arrow">
   </div>
 </template>
 

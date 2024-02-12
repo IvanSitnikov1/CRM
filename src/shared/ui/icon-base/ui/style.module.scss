@@ -1,5 +1,7 @@
 .link {
+  display: flex;
   width: max-content;
+  align-items: center;
   &__text {
     color: #3F8CFF;
     text-decoration: none;
