@@ -1,5 +1,9 @@
 import { useLocalStorage } from '@vueuse/core';
 
-const accessToken = useLocalStorage<string>('token', null);
-export const isAuthenticated = computed(() => !!accessToken.value);
+export const accessTokenLocalStorage = useLocalStorage<string>('token', null);
+export const refreshTokenLocalStorage = useLocalStorage<string>('refreshToken', null);
+export const isAuthenticated = computed(() =>
+   !!accessTokenLocalStorage.value && !!refreshTokenLocalStorage.value,
+);
+
 

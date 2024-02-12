@@ -69,6 +69,7 @@ import { UIInput } from "@/shared/ui/input";
 import { UiButton } from "@/shared/ui/button";
 import Link from "@/shared/ui/link/ui/Link.vue";
 import ArrowRightLongIcon from "@/shared/assets/icons/arrowRightLong.vue";
+import { accessTokenLocalStorage, refreshTokenLocalStorage } from "@/shared/lib/ustils/isAutorise";
 
 const state = reactive({
   fromData: {
@@ -82,8 +83,8 @@ const submitForm = async () => {
     const response = await http.post('http://localhost:3000/auth/logIn', state.fromData);
     const accessToken = response.data.accessToken;
     const refreshToken = response.data.refreshToken;
-    useLocalStorage('token', accessToken);
-    useLocalStorage('refreshToken', refreshToken);
+    accessTokenLocalStorage.value = accessToken
+    refreshTokenLocalStorage.value = refreshToken
     await router.push({ path: '/' })
   } catch (error) {
     console.error('Error submitting form:', error);
@@ -91,7 +92,8 @@ const submitForm = async () => {
 };
 
 const handlerCreateUser = () => {
-  useLocalStorage('token', 'test user');
+  accessTokenLocalStorage.value = 'test user'
+  refreshTokenLocalStorage.value = 'test token'
   router.push({ path: '/' })
 }
 
