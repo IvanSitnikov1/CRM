@@ -57,6 +57,27 @@
         </form>
     </section>
   </div>
+  <PopUp :data="{
+    title: 'Allow notification?',
+    open: isSupported
+  }">
+    <template #content>
+      <div class="login__pop-up">
+        <UiButton class="login__choise"
+                  :data="{
+                    type: 'button',
+                    title: 'Yes'
+                  }"/>
+        <UiButton class="login__choise"
+                  :data="{
+                     type: 'button',
+                     title: 'No'
+                   }"/>
+      </div>
+
+    </template>
+
+  </PopUp>
 </template>
 
 <script setup lang="ts">
@@ -70,6 +91,7 @@ import Link from "@/shared/ui/link/ui/Link.vue";
 import ArrowRightLongIcon from "@/shared/assets/icons/arrowRightLong.vue";
 import { accessTokenLocalStorage, refreshTokenLocalStorage } from "@/shared/lib/ustils/isAutorise";
 import { useCustomWebNotification } from "@/shared/lib/ustils/notification";
+import { PopUp } from "@/entities/popup";
 
 const state = reactive({
   fromData: {
