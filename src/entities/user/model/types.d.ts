@@ -5,10 +5,11 @@ export interface IBookModel {
   bookshelf: IBook[]
 }
 
-export interface IBook {
-  id?: string | null
-  isBox?: string
-  image?: string
-  description?: string
-  authors?: string[]
+export interface IUserCard {
+  image: string
+  tag?: string
+  job?: string
+  fullName: string
+  isBox?: boolean
+  isWhite?: boolean
 }

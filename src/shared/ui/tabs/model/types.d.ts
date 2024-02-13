@@ -1,3 +1,8 @@
 export interface ITabs {
-  text?: string
+  tabs: Tab[];
+  activeTab: number;
+}
+
+interface Tab {
+  label: string;
 }

@@ -4,7 +4,10 @@
       title: 'Employees'
     }"/>
     <div class="wrapper">
-      <Tabs>
+      <Tabs :data="{
+        tabs: tabs,
+        activeTab: store.activeTab
+      }" @onTab="handlerChangeTab">
         <template #List>
           <RecycleScroller
             class="employees-page__employees"
@@ -12,7 +15,6 @@
             :item-size="288"
             :page-mode="true"
             key-field="id"
-            v-slot="{ item }"
           >
             <CardEmployee
               :data="{
@@ -62,7 +64,6 @@
             :item-size="312"
             :page-mode="true"
             key-field="id"
-            v-slot="{ item }"
           >
             <Card :data="{
             isBox: true,
@@ -112,6 +113,18 @@ const generateHours = () => new Array(700).fill(1).map((v, i) => {
 })
 
 const list = generateHours();
+const tabs = [
+  { label: 'List' },
+  { label: 'Activity' }
+]
+
+const store = reactive({
+  activeTab: 0
+})
+
+const handlerChangeTab = (value: number) => {
+  store.activeTab = value;
+}
 
 /*onBeforeUnmount(() => {
   bookModel.$reset()

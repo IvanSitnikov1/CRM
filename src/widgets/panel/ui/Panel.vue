@@ -22,9 +22,6 @@ import { useRouter } from 'vue-router'
 import { NavigationToggle } from '@/features/navigation'
 
 const router = useRouter()
-const goToHome = () => {
-  router.push({ path: '/' })
-}
 
 const handlerGoToProfile = () => {
   router.push({ path: '/profile' })

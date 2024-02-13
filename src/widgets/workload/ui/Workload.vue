@@ -12,9 +12,16 @@
       }">
         <template #content>
           <div class="workload__employees">
-            <Card v-for="index in 6" :key="index" :data="{
-            image: 'https://cdn.tripster.ru/thumbs2/f5a8c1fe-b128-11ed-9e63-2e5ef03bee8d.1220x600.jpeg',
-          }"/>
+            <Card v-for="index in 6" :key="index"
+                  :data="{
+                    isWhite: true,
+                    isBox: false,
+                    fullName: 'Shawn Stone',
+                    tag: 'Middle',
+                    job: 'UI/UX Designer',
+                    image: 'https://cdn.tripster.ru/thumbs2/f5a8c1fe-b128-11ed-9e63-2e5ef03bee8d.1220x600.jpeg',
+                  }"
+            />
           </div>
         </template>
       </TitleWithLink>
