@@ -1,6 +1,6 @@
 <template>
   <section class="not-found">
-    <img src="./../../../shared/assets/nofFound.svg" alt="Not Found">
+    <img src="./../../../shared/assets/specialIcons/nofFound.svg" alt="Not Found">
     <h2>{{ title }}</h2>
   </section>
 </template>

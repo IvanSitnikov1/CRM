@@ -1,6 +1,6 @@
 <template>
   <article class="info-panel__logo" @click="app.toggleShowMenu()">
-    <img src="./../../../shared/assets/specialIcons/logo.svg" alt="logo">
+    <img src="@/shared/assets/specialIcons/logo.svg" alt="logo">
   </article>
 </template>
 

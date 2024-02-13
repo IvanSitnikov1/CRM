@@ -3,7 +3,7 @@
     <div class="wrapper">
       <aside class="no-auth__header">
         <div class="no-auth__logo">
-          <img src="@/shared/assets/icons/logo.svg" alt="logo" class="login__image">
+          <img src="@/shared/assets/specialIcons/logo.svg" alt="logo" class="login__image">
         </div>
         <span class="no-auth__title">CRM</span>
       </aside>
