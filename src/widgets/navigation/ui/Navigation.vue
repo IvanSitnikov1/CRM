@@ -7,9 +7,15 @@
           <nav class="navigation__nav">
             <ul class="navigation__menu">
               <li class="navigation__list" v-for="(item, index) in menuItems" :key="index">
-                <div class="navigation__item">
-                  <img src="@/shared/assets/icons/menu.svg" alt="category">
-                  <router-link class="navigation__router" :to="item.route" @click="closeNavigation">
+                <div class="navigation__item" :class="{'navigation__item_active': isCurrentRoute(item.route)}">
+                  <IconBase :data="{
+                    iconName: item.icon,
+                    iconColor: colorItem(isCurrentRoute(item.route))
+                  }"/>
+                  <router-link class="navigation__router"
+                               :to="item.route"
+                               :class="{'navigation__router_active': isCurrentRoute(item.route)}"
+                               @click="closeNavigation">
                     {{ item.label }}
                   </router-link>
                 </div>
@@ -23,7 +29,9 @@
                     }"
           />
           <div class="navigation__logout">
-            <img src="@/shared/assets/icons/logout.svg" alt="Log out">
+            <IconBase :data="{
+              iconName: 'logout'
+            }"/>
             <button class="navigation__button_logout">
               Log out
             </button>
@@ -43,9 +51,12 @@ const router = useRouter()
 
 import { useAppModel } from '@/entities/app'
 import { NavigationToggle } from '@/features/navigation'
+import IconBase from "@/shared/ui/icon-base/ui/IconBase.vue";
 
 const app = useAppModel()
 
+const isCurrentRoute = (path: string) => router.currentRoute.value.path === path;
+const colorItem = (value: boolean) => value ? '#3F8CFF' : '#7D8592'
 
 const closeNavigation = () => {
   app.updateShowMenu(false)
@@ -59,7 +70,5 @@ const showSupport = () => {
 
 
 <style lang="scss">
-  @import "style.module";
-
-
+@import "style.module";
 </style>

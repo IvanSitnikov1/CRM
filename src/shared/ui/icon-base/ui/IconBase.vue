@@ -6,25 +6,29 @@
        :aria-labelledby="data.iconName"
        role="presentation"
   >
-    <title
-      :id="data.iconName"
-      lang="en"
-    >{{data.iconName}} icon</title>
-    <g :fill="data.iconColor">
-      <slot />
+    <title :id="data.iconName" lang="en">{{ data.iconName }} icon</title>
+    <g :color="data.iconColor">
+      <component :is="getIconComponent" />
     </g>
   </svg>
 </template>
+
 <script setup lang="ts">
-import { type IIcon } from './../index'
+import { defineAsyncComponent } from 'vue'
+import type { IIcon } from "@/shared/ui/icon-base";
 
 const props = defineProps<{
-  data: IIcon
-}>()
+  data: IIcon;
+}>();
+
+
+const getIconComponent = defineAsyncComponent(() => {
+    return import(`./../../../../shared/assets/icons/${props.data.iconName}.vue`);
+})
 
 
 </script>
 
 <style lang="scss">
- @import "style.module";
+@import "style.module";
 </style>

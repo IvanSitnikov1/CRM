@@ -15,12 +15,12 @@
         :readonly="data.isReadonly"
         @input="handlerInput"
       />
-      <IconBase v-if="data.iconName" :data="{
-        iconName: data.iconName,
-        iconColor: data.iconColor
-      }">
-        <slot name="icon"/>
-      </IconBase>
+      <IconBase v-if="data.iconName"
+                :data="{
+                  iconName: data.iconName,
+                  iconColor: data.iconColor
+                }"
+      />
     </div>
 
   </article>

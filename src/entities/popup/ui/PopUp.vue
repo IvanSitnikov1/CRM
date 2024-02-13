@@ -8,11 +8,12 @@
       >
           <section class="pop-up__content">
             <header class="pop-up__header" :class="{'pop-up__header_full': isReaching }">
-              <img src="@/shared/assets/icons/close.svg"
-                   alt="close"
-                   class="pop-up__close"
-                   @click="closePopUp"
-              >
+              <IconBase
+                class="pop-up__close"
+                @click="closePopUp"
+                :data="{
+                  iconName: 'close'
+                }"/>
               <Title :data="{
                 size: 'medium',
                 title: data.title,
@@ -33,6 +34,7 @@
 import { Title } from '@/shared/ui/title'
 import type { IPopUp } from '@/entities/popup'
 import { useScroll } from '@vueuse/core'
+import IconBase from "@/shared/ui/icon-base/ui/IconBase.vue";
 
 const PupUpRef = ref<HTMLElement | null>(null)
 const { y } = useScroll(PupUpRef)

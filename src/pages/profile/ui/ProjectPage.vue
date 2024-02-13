@@ -69,13 +69,9 @@
                     name: 'location',
                     title: 'Location',
                     isReadonly: true,
-                    iconName: 'Location'
+                    iconName: 'location'
                   }"
-                >
-                  <template #icon>
-                    <ArrowRightIcon />
-                  </template>
-                </UIInput>
+                />
                 <UIInput
                   :data="{
                     value: 'May 19, 1996',
@@ -83,13 +79,9 @@
                     name: 'birthday',
                     title: 'Birthday Date',
                     isReadonly: true,
-                    iconName: 'Birthday Date'
+                    iconName: 'birthday'
                   }"
-                >
-                  <template #icon>
-                    <ArrowRightIcon />
-                  </template>
-                </UIInput>
+                />
               </div>
             </div>
             <div class="about-user__group">

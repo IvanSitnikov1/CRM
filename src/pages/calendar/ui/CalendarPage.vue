@@ -1,7 +1,7 @@
 <template>
   <section class="calendar-page">
     <Header class="wrapper wrapper_title" :data="{
-      title: 'Dashboard'
+      title: 'Calendar'
     }"/>
     <Calendar />
   </section>

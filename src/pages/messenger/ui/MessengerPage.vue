@@ -12,8 +12,12 @@
             title: 'Conversations',
           }"/>
           <div class="projects-page__icons">
-            <img src="@/shared/assets/icons/search.svg" alt="search">
-            <img src="@/shared/assets/icons/search.svg" alt="add">
+            <IconBase :data="{
+              iconName: 'search'
+            }"/>
+            <IconBase :data="{
+              iconName: 'search'
+            }"/>
           </div>
         </div>
         <hr class="projects-page__line">
@@ -55,6 +59,7 @@ import { Collapse } from '@/shared/ui/collaps'
 import { Header } from '@/shared/ui/header'
 import { Title } from '@/shared/ui/title'
 import { CardMessage } from "@/entities/message";
+import IconBase from "@/shared/ui/icon-base/ui/IconBase.vue";
 
 const state = reactive({
   groups: true,

@@ -7,4 +7,5 @@ const fabConfig = [
   { icon: 'folder', text: 'Folder to Info Portal' },
 ];
 
+
 export default fabConfig;

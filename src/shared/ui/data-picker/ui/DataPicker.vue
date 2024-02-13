@@ -11,18 +11,18 @@
                }"
         />
       </transition>
-      <img
-        src="@/shared/assets/icons/arrowLeftLong.svg"
-        alt="left"
+      <IconBase
         class="date-picker__arrow_left"
         @click="calendar.goToPreviousMonth()"
-      >
-      <img
-        src="../../../assets/icons/arrowRightLong.vue"
-        alt="arrow"
+        :data="{
+          iconName: 'arrowLeftLong'
+        }"/>
+      <IconBase
         class="date-picker__arrow_right"
         @click="calendar.goToNextMonth()"
-      >
+        :data="{
+          iconName: 'arrowRightLong'
+        }"/>
     </header>
     <table class="date-picker__data">
       <thead>
@@ -35,7 +35,7 @@
       </tr>
       </thead>
       <transition name="fade" mode="out-in">
-        <tbody class="date-picker__month" :key="curentDates">
+        <tbody class="date-picker__month">
         <tr v-for="(row, index) in curentDates" :key="index" class="date-picker__days">
           <td v-for="date in row" :key="date.day" :class="getDateClasses(date)">
             {{ date.day }}
@@ -53,6 +53,7 @@ import { ref, watch } from 'vue';
 import { type ILink } from '../../link';
 import { Title } from '@/shared/ui/title';
 import { Calendar, DateInfo } from "./../index";
+import IconBase from "@/shared/ui/icon-base/ui/IconBase.vue";
 
 const calendar = reactive(new Calendar());
 const curentDates = computed(() => calendar.getCalendar());

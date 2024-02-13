@@ -4,7 +4,10 @@
       <slot name="header">
         <div class="collapse__header-default">
           <div class="collapse__arrow" :class="{ 'collapse__arrow_rotate': !data.isExpanded}">
-            <img src="@/shared/assets/icons/arrowDown.svg" alt="arrow">
+            <IconBase :data="{
+              iconName: 'arrowDown',
+              iconColor: '#3F8CFF'
+            }"/>
           </div>
           <div class="collapse__title">
             {{ data.title }}
@@ -22,6 +25,7 @@
 import { Collapse } from 'vue-collapsed';
 
 import { type ICollapse} from './../index'
+import IconBase from "@/shared/ui/icon-base/ui/IconBase.vue";
 
 const emit = defineEmits(['onExpanded'])
 

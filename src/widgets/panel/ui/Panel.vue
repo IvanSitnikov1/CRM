@@ -4,10 +4,14 @@
       <NavigationToggle />
       <div class="info-panel__panel">
         <div class="info-panel__search">
-          <img src="./../../../shared/assets/icons/search.svg" alt="notification">
+          <IconBase :data="{
+            iconName: 'search'
+          }"/>
         </div>
         <div class="info-panel__notification">
-          <img src="./../../../shared/assets/icons/notification.svg" alt="notification">
+          <IconBase :data="{
+            iconName: 'notification'
+          }"/>
         </div>
         <div class="info-panel__profile" @click="handlerGoToProfile">
           <img src="./../../../shared/assets/test.png" alt="name" class="info-panel__profile-image">
@@ -20,6 +24,7 @@
 <script setup lang="ts">
 import { useRouter } from 'vue-router'
 import { NavigationToggle } from '@/features/navigation'
+import IconBase from "@/shared/ui/icon-base/ui/IconBase.vue";
 
 const router = useRouter()
 

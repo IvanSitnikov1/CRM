@@ -65,10 +65,16 @@
             :page-mode="true"
             key-field="id"
           >
-            <Card :data="{
-            isBox: true,
-            image: 'https://cdn.tripster.ru/thumbs2/f5a8c1fe-b128-11ed-9e63-2e5ef03bee8d.1220x600.jpeg',
-            }">
+            <Card
+              :data="{
+                    isWhite: false,
+                    isBox: true,
+                    fullName: 'Shawn Stone',
+                    tag: 'Middle',
+                    job: 'UI/UX Designer',
+                    image: 'https://cdn.tripster.ru/thumbs2/f5a8c1fe-b128-11ed-9e63-2e5ef03bee8d.1220x600.jpeg',
+                  }"
+              >
               <template #content>
                 <div class="employees-page__task">
                   <div class="employees-page__column employees-page__column_center">
@@ -171,6 +177,7 @@ const handlerChangeTab = (value: number) => {
     line-height: 150%;
   }
   &__task {
+    margin-top: 24px;
     display: flex;
     justify-content: space-around;
   }

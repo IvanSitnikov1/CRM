@@ -62,9 +62,6 @@
     cursor: pointer;
     border-right: 2px solid transparent;
     transition: background-color .4s;
-    &_active {
-      border-right-color: #3F8CFF;
-    }
   }
   &__item {
     padding: 8px 10px;
@@ -81,9 +78,12 @@
     }
   }
   &__router {
-    color: #3F8CFF;
+    color: #7D8592;
     text-decoration: none;
     font-size: 16px;
     font-weight: 700;
+    &_active {
+      color: #3F8CFF;
+    }
   }
 }

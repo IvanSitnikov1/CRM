@@ -8,7 +8,10 @@
         <ul class="fab-content__list">
           <li v-for="(item, index) in fabConfig" :key="index" class="fab-content__element">
             <div class="fab-content__image-container">
-              <img :src="getImageUrl(item.icon)" :alt="item.text">
+              <IconBase :data="{
+                iconName:  item.icon,
+                iconColor: '#3F8CFF'
+              }"/>
             </div>
             <span class="fab-content__text">{{ item.text }}</span>
           </li>
@@ -23,17 +26,11 @@ import { useRouter } from 'vue-router'
 import { BottomSheet } from '@/entities/bottom-sheet'
 import { useAppModel } from '@/entities/app'
 import { fabConfig } from '@/widgets/fab'
+import IconBase from "@/shared/ui/icon-base/ui/IconBase.vue";
 
-const getImageUrl = (name) => {
-  return new URL(`/src/shared/assets/icons/fab/${name}.svg`, import.meta.url).href
-}
 const app = useAppModel()
 
 const router = useRouter()
-const goToHome = () => {
-  router.push({ path: '/' })
-}
-
 </script>
 
 
