@@ -18,61 +18,29 @@
         </div>
         <hr class="projects-page__line">
         <div class="projects-page__groups">
-          <Collapse>
+          <Collapse @onExpanded="handlerExpandedGroups"
+                    :data="{
+                      title: 'Groups',
+                      isExpanded: state.groups
+                    }">
             <template #content>
               <div class="projects-page__messages">
-                <article v-for="i in 2" class="message">
-                  <div class="message__icon">
-                    <img class="message__image" src="@/shared/assets/test.png" alt="icon">
-                  </div>
-                  <div class="message__info">
-                    <Title :data="{
-                    title: 'Medical App Team',
-                    size: 'small',
-                    isHighLeading: true
-                  }"/>
-                    <div class="message__last">
-                      Caroline: Hi guys! I’ve share…
-                    </div>
-                  </div>
-                  <div class="message__data">
-                    <time class="message__time">12.04</time>
-                    <div class="message__not-read">
-                    <span class="message__text-count">
-                      12
-                    </span>
-                    </div>
-                  </div>
-                </article>
+                <CardMessage :data="{}"
+                             v-for="index in 2"
+                             :key="index"/>
               </div>
             </template>
           </Collapse>
-          <Collapse>
+          <Collapse @onExpanded="handlerExpandedDirectMessages"
+                    :data="{
+                      title: 'Direct Messages',
+                      isExpanded: state.directMessages
+                    }">
             <template #content>
               <div class="projects-page__messages">
-                <article v-for="i in 6" class="message">
-                  <div class="message__icon">
-                    <img class="message__image" src="@/shared/assets/test.png" alt="icon">
-                  </div>
-                  <div class="message__info">
-                    <Title :data="{
-                    title: 'Medical App Team',
-                    size: 'small',
-                    isHighLeading: true
-                  }"/>
-                    <div class="message__last">
-                      Caroline: Hi guys! I’ve share…
-                    </div>
-                  </div>
-                  <div class="message__data">
-                    <time class="message__time">12.04</time>
-                    <div class="message__not-read">
-                    <span class="message__text-count">
-                      12
-                    </span>
-                    </div>
-                  </div>
-                </article>
+                <CardMessage :data="{}"
+                             v-for="index in 6"
+                             :key="index"/>
               </div>
             </template>
           </Collapse>
@@ -86,8 +54,21 @@
 import { Collapse } from '@/shared/ui/collaps'
 import { Header } from '@/shared/ui/header'
 import { Title } from '@/shared/ui/title'
+import { CardMessage } from "@/entities/message";
+
+const state = reactive({
+  groups: true,
+  directMessages: true,
+})
 
 
+const handlerExpandedGroups = (value: boolean) => {
+  state.groups = value
+}
+
+const handlerExpandedDirectMessages = (value: boolean) => {
+  state.directMessages = value
+}
 
 </script>
 
@@ -124,42 +105,6 @@ import { Title } from '@/shared/ui/title'
   &__line {
     margin-top: 0;
     margin-bottom: 20px;
-  }
-}
-.message {
-  display: flex;
-  &__icon {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    margin-right: 16px;
-    overflow: hidden;
-  }
-  &__image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-  &__info {
-    margin-right: auto;
-  }
-  &__time {
-    font-weight: 600;
-    line-height: 150%;
-  }
-  &__not-read {
-    margin-left: auto;
-    background-color: rgb(246, 81, 96);;
-    border: 2px solid rgb(255, 255, 255);
-    width: max-content;
-    border-radius: 50%;
-    padding: 2px 4px;
-  }
-  &__text-count {
-    color: rgb(255, 255, 255);
-    font-size: 12px;
-    font-weight: 600;
-    line-height: 150%;
   }
 }
 </style>

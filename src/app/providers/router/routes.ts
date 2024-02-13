@@ -6,6 +6,12 @@ export const routes = [
     meta: { requiresAuth: true },
   },
   {
+    path: '/nears-events',
+    name: 'vents',
+    component: () => import('@/pages/nearest-events'),
+    meta: { requiresAuth: true },
+  },
+  {
     path: '/calendar',
     component: () => import('@/pages/calendar'),
     meta: { requiresAuth: true },
@@ -33,6 +39,11 @@ export const routes = [
   {
     path: '/login',
     component: () => import('@/pages/login'),
+  },
+  {
+    path: '/profile',
+    component: () => import('@/pages/profile'),
+    meta: { requiresAuth: true },
   },
   {
     path: '/:pathMatch(.*)',

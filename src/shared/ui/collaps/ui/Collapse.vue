@@ -1,32 +1,39 @@
 <template>
   <article class="collapse">
-    <div class="collapse__header" @click="handlerExpanded(!isExpanded)">
+    <div class="collapse__header" @click="handlerExpanded(!data.isExpanded)">
       <slot name="header">
         <div class="collapse__header-default">
-          <div class="collapse__arrow" :class="{ 'collapse__arrow_rotate': isExpanded}">
+          <div class="collapse__arrow" :class="{ 'collapse__arrow_rotate': !data.isExpanded}">
             <img src="@/shared/assets/icons/arrowDown.svg" alt="arrow">
           </div>
           <div class="collapse__title">
-            Groups
+            {{ data.title }}
           </div>
         </div>
       </slot>
     </div>
-
-    <Collapse :when="isExpanded">
+    <Collapse :when="data.isExpanded">
       <slot name="content"/>
     </Collapse>
   </article>
 </template>
 
-<script setup>
-import { Collapse } from 'vue-collapsed'
+<script setup lang="ts">
+import { Collapse } from 'vue-collapsed';
 
-const isExpanded = ref(false)
+import { type ICollapse} from './../index'
 
-const handlerExpanded = (value) => {
-  isExpanded.value = value
+const emit = defineEmits(['onExpanded'])
+
+const props = defineProps<{
+  data: ICollapse
+}>()
+
+const handlerExpanded = (value: boolean) => {
+  emit('onExpanded', value)
 }
+
+
 </script>
 
 <style lang="scss">

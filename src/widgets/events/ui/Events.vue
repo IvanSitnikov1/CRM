@@ -7,7 +7,7 @@
         },
         link: {
           title: 'View all',
-          to: '/'
+          to: '/nears-events'
         },
         class: 'wrapper events__title'
       }">

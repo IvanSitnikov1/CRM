@@ -1,6 +1,5 @@
 <template>
   <article class="employer-card"
-           :key="index"
            :class="{'employer-card_box': props.data.isBox}"
   >
     <div class="employer-card__about">

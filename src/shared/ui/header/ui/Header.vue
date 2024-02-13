@@ -10,6 +10,7 @@ import { type IHeader } from './../index'
 const props = defineProps<{
   data: IHeader
 }>()
+
 </script>
 
 <style lang="scss">

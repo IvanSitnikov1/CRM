@@ -11,7 +11,8 @@
         :placeholder="data.placeholder"
         :type="data.type"
         :value="data.value"
-        :required="data.isrequired"
+        :required="data.isRequired"
+        :readonly="data.isReadonly"
         @input="handlerInput"
       />
       <IconBase v-if="data.iconName" :data="{

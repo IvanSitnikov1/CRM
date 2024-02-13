@@ -9,7 +9,7 @@
         <div class="info-panel__notification">
           <img src="./../../../shared/assets/icons/notification.svg" alt="notification">
         </div>
-        <div class="info-panel__profile">
+        <div class="info-panel__profile" @click="handlerGoToProfile">
           <img src="./../../../shared/assets/test.png" alt="name" class="info-panel__profile-image">
         </div>
       </div>
@@ -24,6 +24,10 @@ import { NavigationToggle } from '@/features/navigation'
 const router = useRouter()
 const goToHome = () => {
   router.push({ path: '/' })
+}
+
+const handlerGoToProfile = () => {
+  router.push({ path: '/profile' })
 }
 
 </script>

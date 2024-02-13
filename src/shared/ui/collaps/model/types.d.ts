@@ -1,3 +1,4 @@
 export interface ICollapse {
-  text?: string
+  title?: string
+  isExpanded: boolean
 }

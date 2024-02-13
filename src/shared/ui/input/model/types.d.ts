@@ -7,4 +7,6 @@ export interface IUIInput{
   name: string;
   type: 'password' | 'text' | 'email' | 'tel';
   value: string;
+  isRequired?: boolean;
+  isReadonly?: boolean;
 }
