@@ -16,4 +16,6 @@ export type IconName =
   'menu' |
   'notification' |
   'search' |
-  'support';
+  'support' |
+  'employees' |
+  'messenger';

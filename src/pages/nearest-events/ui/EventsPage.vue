@@ -3,7 +3,8 @@
     <div class="wrapper wrapper_title events-page__back">
       <Link :data="{
         title: 'Back to Dashboard',
-        to: '/'
+        to: '/',
+        iconLeft: 'arrowLeftLong'
       }">
 
       </Link>

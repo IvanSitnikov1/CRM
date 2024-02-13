@@ -7,24 +7,22 @@
       size: 'large'
     }"/>
     <div class="title-with-link__link">
-      <Link :data="data.link"/>
-      <IconBase :data="{
-        iconName: 'arrow'
-      }">
-        <ArrowRightIcon />
-      </IconBase>
+      <Link :data="{
+        iconRight: 'arrowRight',
+        iconRightColor: '#3F8CFF',
+        title: data.link?.title,
+        to: data.link?.to || '/'
+      }"/>
     </div>
-
   </article>
   <slot name="content"/>
 </template>
 
 <script setup lang="ts">
 import { type ITitleWithLink } from 'src/entities/grop-title'
-import Link from '@/shared/ui/link/ui/Link.vue'
+
 import { Title } from '@/shared/ui/title'
-import IconBase from "@/shared/ui/icon-base/ui/IconBase.vue";
-import ArrowRightIcon from "@/shared/assets/icons/arrowRight.vue";
+import Link from "@/shared/ui/link/ui/Link.vue";
 
 const props = defineProps<{
   data: ITitleWithLink
