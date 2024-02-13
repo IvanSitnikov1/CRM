@@ -14,7 +14,7 @@
           <div class="workload__employees">
             <Card v-for="index in 6" :key="index"
                   :data="{
-                    isWhite: true,
+                    isWhite: false,
                     isBox: false,
                     fullName: 'Shawn Stone',
                     tag: 'Middle',
