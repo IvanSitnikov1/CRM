@@ -1,11 +1,11 @@
 <template>
-  <article class="project" v-for="index in 3" :key="index">
-    <div class="project__header">
-      <div class="project__meta">
-        <div class="project__index">
+  <article class="task">
+    <div class="task__header">
+      <div class="task__meta">
+        <div class="task__index">
           Task Name
         </div>
-        <Title class="project__name" :data="{
+        <Title class="task__name" :data="{
           title: 'Medical App (iOS native)',
           isHighLeading: true,
           size: 'medium',
@@ -17,47 +17,47 @@
           size: 24
         }"/>
     </div>
-    <hr class="project__line">
+    <hr class="task__line">
     <Title :data="{
       title: 'Project Data',
       size: 'small',
       marginBottom: 'medium',
       isHighLeading: true
     }"/>
-    <div class="project__overview">
-      <div class="project__all-tasks">
-        <div class="project__column-name">
+    <div class="task__overview">
+      <div class="task__all-tasks">
+        <div class="task__column-name">
           All tasks
         </div>
-        <div class="project__column-data">
+        <div class="task__column-data">
           34
         </div>
       </div>
-      <div class="project__active-tasks">
-        <div class="project__column-name">
+      <div class="task__active-tasks">
+        <div class="task__column-name">
           Active tasks
         </div>
-        <div class="project__column-data">
+        <div class="task__column-data">
           13
         </div>
       </div>
-      <div class="project__assignees">
-        <div class="project__column-name">
+      <div class="task__assignees">
+        <div class="task__column-name">
           Assignees
         </div>
-        <div class="project__column-avatars">
-          <div class="project__avatar" v-for="index in 2" :key="index">
-            <img src="@/shared/assets/test.png" alt="assigned" class="project__avatar-image">
+        <div class="task__column-avatars">
+          <div class="task__avatar" v-for="index in 2" :key="index">
+            <img src="@/shared/assets/test.png" alt="assigned" class="task__avatar-image">
           </div>
-          <div class="project__avatar project__avatar_last">
+          <div class="task__avatar task__avatar_last">
             +2
           </div>
         </div>
       </div>
     </div>
-    <div class="project__info">
-      <div class="project__date">
-        <span class="project__data-text">
+    <div class="task__info">
+      <div class="task__date">
+        <span class="task__data-text">
           Priority
         </span>
         <Priority :data="{

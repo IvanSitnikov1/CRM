@@ -39,9 +39,26 @@
           </div>
         </template>
         <template #content>
-          <div class="projects-page__tasks">
-            <CardTask data="" v-for="index in 5" :key="index"/>
-          </div>
+          <Collapse @onExpanded="handlerShowTaskDev" :data="{
+            isExpanded: state.activeTasks.showDevelopment,
+            title: 'Development (5 issues)'
+          }">
+            <template #content>
+              <div class="projects-page__tasks">
+                <CardTask data="" v-for="index in 5" :key="index"/>
+              </div>
+            </template>
+          </Collapse>
+          <Collapse @onExpanded="handlerShowTaskDes" :data="{
+            isExpanded: state.activeTasks.showDesign,
+            title: 'Design (2 issues)'
+          }">
+            <template #content>
+              <div class="projects-page__tasks">
+                <CardTask data="" v-for="index in 2" :key="index"/>
+              </div>
+            </template>
+          </Collapse>
         </template>
       </Collapse>
     </main>
@@ -76,6 +93,14 @@ const state = reactive({
 
 const handlerShowTask = (value: boolean) => {
   state.activeTasks.show = value;
+}
+
+const handlerShowTaskDev = (value: boolean) => {
+  state.activeTasks.showDevelopment = value;
+}
+
+const handlerShowTaskDes = (value: boolean) => {
+  state.activeTasks.showDesign = value;
 }
 
 
