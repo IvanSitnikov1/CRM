@@ -1,0 +1,26 @@
+.project-small {
+  border-radius: 14px;
+  padding: 15px 20px 15px 0;
+  box-shadow: 0 6px 58px 0 rgba(196, 203, 214, 0.1);
+  background: rgb(255, 255, 255);
+  &__body {
+    border-left: 4px solid #3F8CFF;
+    padding-left: 15px;
+    display: flex;
+    justify-content: space-between;
+  }
+  &__id {
+    margin-bottom: 4px;
+  }
+  &__info {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+  }
+  &__name {
+    max-width: 192px;
+  }
+  &__select {
+    align-self: center;
+  }
+}

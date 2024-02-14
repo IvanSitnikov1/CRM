@@ -1,35 +1,50 @@
 <template>
   <section class="projects-page">
     <PopUp :data="{
-        open: true,
+        open: false,
         title: 'time',
       }">
       <template #content>
-        <div class="date-selector">
-          <TimePicker
-            :data="{
-              source: generateHours(),
-              count: 20,
-              sensitivity: 0.8,
-              value: currentHour
-            }"
-            @onChange="console.log($event)"
-          />
-          <TimePicker
-            :data="{
-              source: generateMinutes(),
-              count: 20,
-              sensitivity: 0.6,
-              value: currentMinute
-            }"
-            @onChange="console.log($event)"
-          />
-        </div>
       </template>
     </PopUp>
     <Header class="wrapper wrapper_title" :data="{
       title: 'Projects'
     }"/>
+    <main class="wrapper">
+      <CardProjectSmall class="projects-page__current-project" :data="{
+        id: 'PN0001245',
+        title: 'Medical App (iOS native)',
+      }"/>
+      <div class="projects-page__filter">
+        <Title :data="{
+          title: 'Tasks',
+          isHighLeading: true
+        }"/>
+        <div class="projects-page__filter-icon">
+          <IconBase :data="{
+            iconName: 'search'
+          }"/>
+        </div>
+      </div>
+      <Collapse @onExpanded="handlerShowTask" :data="{
+        isExpanded: state.activeTasks.show
+      }">
+        <template #header>
+          <div class="projects-page__group">
+            <Title class="projects-page__group-name" :data="{
+              title: 'Active Tasks',
+              size: 'small',
+              isHighLeading: true
+            }"/>
+          </div>
+        </template>
+        <template #content>
+          <div class="projects-page__tasks">
+            <CardTask data="" v-for="index in 5" :key="index"/>
+          </div>
+        </template>
+      </Collapse>
+    </main>
   </section>
 </template>
 
@@ -38,21 +53,30 @@ import { useHead } from '@unhead/vue'
 import { TimePicker } from '@/shared/ui/time-picker'
 import { PopUp } from '@/entities/popup'
 import { Header } from '@/shared/ui/header'
+import { CardProjectSmall } from "@/entities/project-small";
+import { Title } from "@/shared/ui/title";
+import IconBase from "@/shared/ui/icon-base/ui/IconBase.vue";
+import { Collapse } from "@/shared/ui/collaps";
+import { CardTask } from "@/entities/task";
 
 useHead({
   title: 'Projects'
 })
 
-const generateHours = () => new Array(23).fill(1).map((v, i) => {
-  return { value: i + 1, text: i + 1}
-});
+const state = reactive({
+  activeTasks: {
+    show: true,
+    showDesign: true,
+    showDevelopment: true,
+    showTesting: true,
+    showMarketing: true,
+    showProjectManagement: true,
+  }
+})
 
-const  generateMinutes = () => new Array(60).fill(1).map((v, i) => {
- return { value: i + 1, text: i + 1}
-});
-
-const currentHour = new Date().getHours();
-const currentMinute = new Date().getMinutes();
+const handlerShowTask = (value: boolean) => {
+  state.activeTasks.show = value;
+}
 
 
 /*onBeforeUnmount(() => {
@@ -61,12 +85,40 @@ const currentMinute = new Date().getMinutes();
 </script>
 
 <style lang="scss">
-.date-selector {
-  perspective: 2000px;
-  display: flex;
-  border-radius: 24px;
-  justify-content: space-between;
-  max-width: 600px;
-  width: 100%;
+.projects-page {
+  &__current-project {
+    margin-bottom: 32px;
+  }
+  &__filter {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+  &__filter-icon {
+    align-self: center;
+    width: 48px;
+    height: 48px;
+    border-radius: 14px;
+    box-shadow: 0 6px 58px 0 rgba(196, 203, 214, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+  }
+  &__group {
+    border-radius: 14px;
+    background: rgb(230, 237, 245);
+    padding: 12px 0;
+    margin-bottom: 20px;
+  }
+  &__tasks {
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+  }
+  &__group-name {
+    max-width: max-content;
+    margin: 0 auto;
+  }
 }
 </style>

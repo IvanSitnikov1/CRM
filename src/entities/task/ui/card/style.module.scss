@@ -1,0 +1,79 @@
+.project {
+  border-radius: 24px;
+  background: #FFF;
+  padding: 20px;
+  box-shadow: 0 6px 58px 0 rgba(196, 203, 214, 0.10);
+  &__header {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  &__column-avatars{
+    display: flex;
+  }
+  &__avatar {
+    height: 24px;
+    width: 24px;
+    border-radius: 50%;
+    border: 2px solid white;
+    overflow: hidden;
+    &:nth-child(1) {
+      z-index: 1;
+    }
+    &:nth-child(2) {
+      transform: translateX(-12px);
+      z-index: 2;
+    }
+    &_last {
+      transform: translateX(-24px);
+      background-color: #3F8CFF;
+      color: rgb(255, 255, 255);
+      font-size: 12px;
+      display: flex;
+      z-index: 4;
+      justify-content: center;
+      align-items: center;
+      font-weight: 600;
+      line-height: 150%;
+    }
+  }
+  &__avatar-image {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+  }
+  &__index {
+    margin-bottom: 4px;
+  }
+  &__overview {
+    display: flex;
+    margin-bottom: 20px;
+    justify-content: space-between;
+  }
+  &__info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  &__date {
+    display: flex;
+    flex-direction: column;
+    column-gap: 8px;
+  }
+  &__column-name {
+    margin-bottom: 4px;
+  }
+  &__column-data {
+    color: #0A1629;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 150%
+  }
+  &__line {
+    margin-bottom: 24px;
+  }
+  &__title {
+    margin-bottom: 16px;
+  }
+}
