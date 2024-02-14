@@ -1,12 +1,15 @@
 .support {
   padding: 0 20px;
   &__text {
-    color: #0A1629;
+    color: rgb(10, 22, 41);
     font-size: 16px;
     line-height: 150%;
-    margin-bottom: 20px;
+    margin:0 0 20px 0;
   }
   &__textarea {
     margin-bottom: 40px;
+  }
+  &__select {
+    margin-bottom: 24px;
   }
 }

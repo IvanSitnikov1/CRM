@@ -8,6 +8,7 @@
         <p class="support__text">
           Describe your question and our specialists will answer you within 24 hours.
         </p>
+        <UISelect class="support__select" data=""/>
         <UiTextArea class="support__textarea" :data="{
           name: 'problem',
           title: 'Description',
@@ -30,6 +31,7 @@ import { useAppModel } from '@/entities/app'
 import { PopUp } from '@/entities/popup'
 import { UiTextArea } from '@/shared/ui/textarea'
 import { UiButton } from '@/shared/ui/button'
+import { UISelect } from "@/shared/ui/select";
 
 const app = useAppModel()
 

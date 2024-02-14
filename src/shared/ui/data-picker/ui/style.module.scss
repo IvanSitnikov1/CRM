@@ -9,16 +9,18 @@
     border-spacing: 10px 14px;
   }
   &__title {
+    flex-basis: 144px;
     order: 2;
+    text-align: center;
+    flex-shrink: 0;
   }
   &__header {
     margin: 0 20px 20px;
     position: relative;
     display: flex;
-    padding: 0 32px;
     align-items: center;
     column-gap: 24px;
-    justify-content: space-between;
+    justify-content: center;
     color: #3F8CFF;
   }
   &__days-name {
