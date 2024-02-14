@@ -7,7 +7,7 @@
         <option value="txt">txt</option>
         <option value="epub">ePub</option>
         <option value="fb2">fb2</option>
-        <option value="mobi">mobi</option>
+        <option value="mobi" v-for="index in 100">mobi</option>
       </select>
       <IconBase
         class="select__icon"
