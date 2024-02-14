@@ -1,14 +1,10 @@
-export interface IBookModel {
-  queryBooks: books_v1.Schema$Volume[]
-  book: IBook
-  favorites: IBook[]
-  bookshelf: IBook[]
-}
+import type { IconName, Priority } from "@/shared/assets/icons";
 
-export interface IBook {
-  id?: string | null
-  title?: string
-  image?: string
-  description?: string
-  authors?: string[]
+
+export interface IEventCard {
+  title: string
+  day: string
+  time: string
+  startTime?: string
+  priority?: Priority
 }

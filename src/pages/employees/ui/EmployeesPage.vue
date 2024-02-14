@@ -61,7 +61,7 @@
           <RecycleScroller
             class="employees-page__employees"
             :items="list"
-            :item-size="312"
+            :item-size="336"
             :page-mode="true"
             key-field="id"
           >

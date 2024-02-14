@@ -50,7 +50,6 @@
 </template>
 
 <script setup lang="ts">
-import { ref, watch } from 'vue';
 import { type ILink } from '../../link';
 import { Title } from '@/shared/ui/title';
 import { Calendar, DateInfo } from "./../index";

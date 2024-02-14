@@ -1,0 +1,23 @@
+.priority {
+  display: flex;
+  align-items: center;
+  column-gap: 8px;
+  &_large {
+    color: #f65160;
+  }
+  &_medium {
+    color: #fdc748;
+  }
+  &_small {
+    color: #00d097;
+  }
+  &__icon {
+    &_small {
+      transform: rotate(180deg);
+    }
+  }
+  &__text {
+    font-weight: 700;
+    line-height: 150%;
+  }
+}

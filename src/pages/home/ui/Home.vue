@@ -44,14 +44,6 @@ useHead({
 </script>
 
 <style lang="scss">
-.tag-time {
-  display: flex;
-  column-gap: 4px;
-  background-color: #F4F9FD;
-  border-radius: 8px;
-  align-items: center;
-  padding: 8px;
-}
 .home-page {
   &__welcome-text {
     color: #7D8592;
@@ -70,16 +62,6 @@ useHead({
     font-size: 16px;
     font-weight: 400;
     line-height: 150%
-  }
-}
-.status {
-  display: flex;
-  align-items: center;
-  column-gap: 4px;
-  &__text {
-    color: #FFBD21;
-    font-weight: 700;
-    line-height: 120%;
   }
 }
 </style>

@@ -14,7 +14,17 @@
     }"/>
     <div class="wrapper">
       <div class="events-page__events">
-        <CardEvent data=""/>
+        <CardEvent
+          v-for="index in 7"
+          :key="index"
+          :data="{
+            day: 'Today',
+            startTime: '5:00 PM',
+            title: 'Meeting with Development Team',
+            time: '4h',
+            priority: 'medium'
+          }"
+        />
       </div>
     </div>
   </section>

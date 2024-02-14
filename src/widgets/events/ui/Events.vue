@@ -13,7 +13,17 @@
       }">
         <template #content>
           <section class="events">
-            <CardEvent data=""/>
+            <CardEvent
+              v-for="index in 7"
+              :key="index"
+              :data="{
+                day: 'Today',
+                startTime: '5:00 PM',
+                title: 'Meeting with Development Team',
+                time: '4h',
+                priority: 'medium'
+              }"
+            />
           </section>
         </template>
       </TitleWithLink>

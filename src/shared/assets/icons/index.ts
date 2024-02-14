@@ -18,4 +18,8 @@ export type IconName =
   'search' |
   'support' |
   'employees' |
-  'messenger';
+  'messenger' |
+  'priority' |
+  'clock';
+
+export type Priority = 'small' | 'medium' | 'large';

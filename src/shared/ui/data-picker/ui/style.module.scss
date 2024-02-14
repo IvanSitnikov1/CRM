@@ -80,6 +80,11 @@
       z-index: 6;
     }
     &:nth-child(4) {
+      background: #6D5DD3;
+      transform: translateX(-12px);
+      z-index: 2;
+    }
+    &:nth-child(5) {
       transform: translateX(12px);
       background: #202860;
       color: white;
