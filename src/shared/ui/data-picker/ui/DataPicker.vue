@@ -35,12 +35,13 @@
       </tr>
       </thead>
       <transition name="fade" mode="out-in">
-        <tbody class="date-picker__month">
-        <tr v-for="(row, index) in curentDates" :key="index" class="date-picker__days">
-          <td v-for="date in row" :key="date.day" :class="getDateClasses(date)">
-            {{ date.day }}
-          </td>
-        </tr>
+        <tbody class="date-picker__month" :key="curentMonth">
+          <tr v-for="(row, index) in curentDates" :key="index" class="date-picker__days">
+            <td v-for="date in row" :key="date.day" :class="getDateClasses(date)">
+              {{ date.day }}
+              <div class="date-picker__event" v-for="index in 4" :key="index"/>
+            </td>
+          </tr>
         </tbody>
       </transition>
     </table>
