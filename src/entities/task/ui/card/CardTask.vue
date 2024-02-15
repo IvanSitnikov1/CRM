@@ -45,14 +45,7 @@
         <div class="task__column-name">
           Assignees
         </div>
-        <div class="task__column-avatars">
-          <div class="task__avatar" v-for="index in 2" :key="index">
-            <img src="@/shared/assets/test.png" alt="assigned" class="task__avatar-image">
-          </div>
-          <div class="task__avatar task__avatar_last">
-            +2
-          </div>
-        </div>
+        <Avatars :data="{}"/>
       </div>
     </div>
     <div class="task__info">
@@ -78,6 +71,7 @@ import { Title } from '@/shared/ui/title'
 import IconBase from "@/shared/ui/icon-base/ui/IconBase.vue";
 import { Priority } from "@/shared/ui/priority";
 import { CircleProgressBar } from "@/shared/ui/circle-progress-bar";
+import { Avatars } from "@/shared/ui/avatars";
 
 const props = defineProps<{
   data: IBook

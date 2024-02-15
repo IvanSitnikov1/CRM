@@ -57,14 +57,7 @@
         <div class="project__column-name">
           Assignees
         </div>
-        <div class="project__column-avatars">
-          <div class="project__avatar" v-for="index in 2" :key="index">
-            <img src="@/shared/assets/test.png" alt="assigned" class="project__avatar-image">
-          </div>
-          <div class="project__avatar project__avatar_last">
-            +2
-          </div>
-        </div>
+        <Avatars :data="{}"/>
       </div>
     </div>
   </article>
@@ -75,6 +68,7 @@ import { type IBook } from 'src/entities/user'
 import { Title } from '@/shared/ui/title'
 import IconBase from "@/shared/ui/icon-base/ui/IconBase.vue";
 import { Priority } from "@/shared/ui/priority";
+import { Avatars } from "@/shared/ui/avatars";
 
 const props = defineProps<{
   data: IBook

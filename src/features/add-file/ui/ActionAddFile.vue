@@ -1,23 +1,30 @@
 <template>
-  <article class="add-file">
-    <IconBase
-      :data="{
-        iconName: 'menu',
-        iconColor: '#0A1629',
-      }"
+    <ActionButton
+        @click="open"
+        :data="{
+            iconName: 'search',
+            color: '#6D5DD3',
+        }"
     />
-  </article>
 </template>
 
 <script setup>
-import { useAppModel } from '@/entities/app'
-import { IconBase } from "@/shared/ui/icon-base";
+import { useFileDialog } from '@vueuse/core';
+import { useAppModel } from '@/entities/app';
+import { IconBase } from '@/shared/ui/icon-base';
+import { ActionButton } from '@/shared/ui/action-button';
 
-const app = useAppModel()
+const { files, open, reset, onChange } = useFileDialog({
+  accept: 'image/*', // Set to accept only image files
+  directory: false
+});
+
+onChange(files => {
+  console.log(files);
+});
 
 </script>
 
 <style lang="scss">
   @import "style.module";
 </style>
-

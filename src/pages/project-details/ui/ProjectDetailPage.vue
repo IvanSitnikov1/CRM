@@ -56,23 +56,7 @@
                         </div>
                         <div class="project-description__assignees">
                             <span class="project-description__column-name">Assignees</span>
-                            <!-- TODO: Вынести в отдельный компанет -->
-                            <div class="task__column-avatars">
-                                <div
-                                    class="task__avatar"
-                                    v-for="index in 2"
-                                    :key="index"
-                                >
-                                    <img
-                                        src="@/shared/assets/test.png"
-                                        alt="assigned"
-                                        class="task__avatar-image"
-                                    >
-                                </div>
-                                <div class="task__avatar task__avatar_last">
-                                    +2
-                                </div>
-                            </div>
+                            <Avatars :data="{}" />
                         </div>
                         <div class="project-description__priority">
                             <span class="project-description__column-name">Priority</span>
@@ -99,10 +83,11 @@
                         </span>
                     </div>
                 </main>
-                <footer>
-                  <div>
-                    <ActionAddFile/>
-                  </div>
+                <footer class="project-description__footer">
+                    <div class="project-description__actions">
+                        <ActionAddFile />
+                        <ActionCreatLink />
+                    </div>
                 </footer>
             </article>
         </div>
@@ -116,7 +101,10 @@ import { Link } from '@/shared/ui/link';
 import { IconBase } from '@/shared/ui/icon-base';
 import { TagUser } from '@/shared/ui/tag-user';
 import { Priority } from '@/shared/ui/priority';
-import { ActionAddFile } from "@/features/add-file";
+import { ActionAddFile } from '@/features/add-file';
+import { Avatars } from '@/shared/ui/avatars';
+import { ActionButton } from '@/shared/ui/action-button';
+import { ActionCreatLink } from "@/features/creat-link";
 
 useHead({
   title: 'Project details'
@@ -167,6 +155,13 @@ useHead({
     grid-template-rows: repeat(2, 1fr);
     grid-row-gap: 24px;
     margin-bottom: 24px;
+  }
+  &__actions {
+    display: flex;
+    column-gap: 16px;
+  }
+  &__footer {
+    margin-top: 32px;
   }
   &__column-name {
     display: block;

@@ -1,4 +1,4 @@
-import { useWebNotification } from "@vueuse/core";
+import { useWebNotification } from '@vueuse/core';
 
 /**
  * Creates a customizable web notification.
@@ -11,7 +11,7 @@ export const useCustomWebNotification = (options = {}) => {
     dir: 'auto',
     lang: 'en',
     renotify: true,
-    tag: 'test',
+    tag: 'test'
   };
 
   const {
@@ -37,6 +37,6 @@ export const useCustomWebNotification = (options = {}) => {
     permissionGranted,
     onShow,
     onError,
-    onClose,
+    onClose
   };
 };

@@ -9,40 +9,6 @@
     column-gap: 20px;
     align-items: center;
   }
-  &__column-avatars{
-    display: flex;
-  }
-  &__avatar {
-    height: 24px;
-    width: 24px;
-    border-radius: 50%;
-    border: 2px solid white;
-    overflow: hidden;
-    &:nth-child(1) {
-      z-index: 1;
-    }
-    &:nth-child(2) {
-      transform: translateX(-12px);
-      z-index: 2;
-    }
-    &_last {
-      transform: translateX(-24px);
-      background-color: #3F8CFF;
-      color: rgb(255, 255, 255);
-      font-size: 12px;
-      display: flex;
-      z-index: 4;
-      justify-content: center;
-      align-items: center;
-      font-weight: 600;
-      line-height: 150%;
-    }
-  }
-  &__avatar-image {
-    height: 100%;
-    width: 100%;
-    object-fit: cover;
-  }
   &__categor {
     width: 48px;
     height: 48px;
