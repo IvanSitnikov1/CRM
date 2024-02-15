@@ -8,6 +8,46 @@
         tabs: tabs,
         activeTab: store.activeTab
       }" @onTab="handlerChangeTab">
+        <template #Activity>
+          <RecycleScroller
+            class="employees-page__employees"
+            :items="list"
+            :item-size="336"
+            :page-mode="true"
+            key-field="id"
+          >
+            <Card
+              :data="{
+                    isWhite: false,
+                    isBox: true,
+                    fullName: 'Shawn Stone',
+                    tag: 'Middle',
+                    job: 'UI/UX Designer',
+                    image: 'https://cdn.tripster.ru/thumbs2/f5a8c1fe-b128-11ed-9e63-2e5ef03bee8d.1220x600.jpeg',
+                  }"
+            >
+              <template #content>
+                <div class="employees-page__task">
+                  <div class="employees-page__column employees-page__column_center">
+                    <div class="employees-page__date employees-page__date_big">0</div>
+                    <div class="employees-page__about">Backlog
+                      tasks</div>
+                  </div>
+                  <div class="employees-page__column employees-page__column_center">
+                    <div class="employees-page__date employees-page__date_big">16</div>
+                    <div class="employees-page__about">Tasks
+                      In Progress</div>
+                  </div>
+                  <div class="employees-page__column employees-page__column_center">
+                    <div class="employees-page__date employees-page__date_big">6</div>
+                    <div class="employees-page__about">Tasks
+                      In Review</div>
+                  </div>
+                </div>
+              </template>
+            </Card>
+          </RecycleScroller>
+        </template>
         <template #List>
           <RecycleScroller
             class="employees-page__employees"
@@ -57,46 +97,6 @@
             </CardEmployee>
           </RecycleScroller>
         </template>
-        <template #Activity>
-          <RecycleScroller
-            class="employees-page__employees"
-            :items="list"
-            :item-size="336"
-            :page-mode="true"
-            key-field="id"
-          >
-            <Card
-              :data="{
-                    isWhite: false,
-                    isBox: true,
-                    fullName: 'Shawn Stone',
-                    tag: 'Middle',
-                    job: 'UI/UX Designer',
-                    image: 'https://cdn.tripster.ru/thumbs2/f5a8c1fe-b128-11ed-9e63-2e5ef03bee8d.1220x600.jpeg',
-                  }"
-              >
-              <template #content>
-                <div class="employees-page__task">
-                  <div class="employees-page__column employees-page__column_center">
-                    <div class="employees-page__date employees-page__date_big">0</div>
-                    <div class="employees-page__about">Backlog
-                      tasks</div>
-                  </div>
-                  <div class="employees-page__column employees-page__column_center">
-                    <div class="employees-page__date employees-page__date_big">16</div>
-                    <div class="employees-page__about">Tasks
-                      In Progress</div>
-                  </div>
-                  <div class="employees-page__column employees-page__column_center">
-                    <div class="employees-page__date employees-page__date_big">6</div>
-                    <div class="employees-page__about">Tasks
-                      In Review</div>
-                  </div>
-                </div>
-              </template>
-            </Card>
-          </RecycleScroller>
-        </template>
       </Tabs>
     </div>
   </section>
@@ -120,8 +120,8 @@ const generateHours = () => new Array(700).fill(1).map((v, i) => {
 
 const list = generateHours();
 const tabs = [
-  { label: 'List' },
-  { label: 'Activity' }
+  { label: 'Activity' },
+  { label: 'List' }
 ]
 
 const store = reactive({

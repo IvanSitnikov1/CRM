@@ -1,5 +1,5 @@
-import Link from './Link.vue'
+import IconBase from './ui/IconBase.vue'
 
 
-export { Link }
+export { IconBase }
 export { type IIcon } from './model/types'

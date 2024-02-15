@@ -3,11 +3,11 @@
     <section class="projects-container">
       <TitleWithLink :data="{
         title: {
-          title: 'Project'
+          title: 'Projects'
         },
         link: {
           title: 'View all',
-          to: '/'
+          to: '/projects'
         }
       }">
         <template #content>

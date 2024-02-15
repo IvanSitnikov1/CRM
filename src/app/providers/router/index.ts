@@ -1,11 +1,11 @@
-import { createRouter, createWebHistory } from 'vue-router'
-import { routes } from './routes'
-import { isAuthenticated } from "@/shared/lib/ustils/isAutorise";
+import { createRouter, createWebHistory } from 'vue-router';
+import { routes } from './routes';
+import { isAuthenticated } from '@/shared/lib/ustils/isAutorise';
 
 export const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes
-})
+});
 
 router.beforeEach((to, from, next) => {
   if (to.matched.some(record => record.meta.requiresAuth)) {
@@ -18,6 +18,3 @@ router.beforeEach((to, from, next) => {
     next();
   }
 });
-
-
-

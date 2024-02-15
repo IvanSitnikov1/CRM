@@ -14,6 +14,7 @@
   },
   "dependencies": {
     "@unhead/vue": "^1.8.4",
+    "@vue/eslint-config-airbnb": "^8.0.0",
     "@vueuse/core": "^10.7.2",
     "axios": "^1.5.1",
     "date-fns": "^3.3.1",
@@ -24,6 +25,8 @@
     "vue-virtual-scroller": "^2.0.0-beta.8"
   },
   "devDependencies": {
+    "@babel/core": "^7.23.9",
+    "@babel/eslint-parser": "^7.23.10",
     "@rushstack/eslint-patch": "^1.3.2",
     "@tsconfig/node18": "^18.2.0",
     "@types/jsdom": "^21.1.1",
@@ -33,8 +36,8 @@
     "@vue/eslint-config-typescript": "^11.0.3",
     "@vue/test-utils": "^2.4.1",
     "@vue/tsconfig": "^0.4.0",
-    "eslint": "^8.46.0",
-    "eslint-plugin-vue": "^9.16.1",
+    "eslint": "^8.56.0",
+    "eslint-plugin-vue": "^9.21.1",
     "jsdom": "^22.1.0",
     "npm-run-all": "^4.1.5",
     "prettier": "^3.0.0",
