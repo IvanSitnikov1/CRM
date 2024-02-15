@@ -14,7 +14,7 @@
         <Link :data="{
           title: 'View details',
           iconRight: 'arrowRight',
-          to: '/'
+          to: '/projects/details'
         }"/>
       </div>
       <div class="project-small__select">

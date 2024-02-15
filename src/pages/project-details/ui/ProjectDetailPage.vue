@@ -99,6 +99,11 @@
                         </span>
                     </div>
                 </main>
+                <footer>
+                  <div>
+                    <ActionAddFile/>
+                  </div>
+                </footer>
             </article>
         </div>
     </section>
@@ -111,6 +116,7 @@ import { Link } from '@/shared/ui/link';
 import { IconBase } from '@/shared/ui/icon-base';
 import { TagUser } from '@/shared/ui/tag-user';
 import { Priority } from '@/shared/ui/priority';
+import { ActionAddFile } from "@/features/add-file";
 
 useHead({
   title: 'Project details'
