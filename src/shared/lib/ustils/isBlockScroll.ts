@@ -1,6 +1,6 @@
 import { useScrollLock } from '@vueuse/core';
 
-const app = ref<HTMLElement | null>(document.body);
+const app = ref<HTMLElement | null>(document);
 const isLocked = useScrollLock(app);
 
 export const unlock = () => {
