@@ -11,7 +11,6 @@
 import { useAppModel } from '@/entities/app';
 
 const app = useAppModel();
-
 const handlerOpenAddModal = path => {
   switch (path) {
     case '/':

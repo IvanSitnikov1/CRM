@@ -29,6 +29,7 @@
     <Navigation />
     <FabBottomSheet />
     <Support />
+    <AddEmployee />
   </section>
 
 </template>
@@ -41,6 +42,7 @@ import { FabBottomSheet } from '@/widgets/fab'
 import { ActionPlus } from '@/features/action-plus'
 import { Support } from '@/widgets/support'
 import { isAuthenticated } from "@/shared/lib/ustils/isAutorise";
+import { AddEmployee } from "@/widgets/add-employee";
 
 
 const route = useRoute()

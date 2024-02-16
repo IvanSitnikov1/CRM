@@ -1,21 +1,16 @@
 <template>
   <PopUp @onClose="closeSupport" :data="{
-    title: 'Need some Help?',
-    open: app.showSupport
+    title: 'Add Employee?',
+    open: app.showAddEmployee
   }">
     <template #content>
       <form class="support">
-        <p class="support__text">
-          Describe your question and our specialists will answer you within 24 hours.
-        </p>
-        <UISelect class="support__select" data=""/>
-        <UiTextArea class="support__textarea" :data="{
-          name: 'problem',
-          title: 'Description',
-          placeholder: 'Add some description of the request'
+        <UISelect :data="{
+          text: 'Member’s Email',
+          isMultipleSelect: true
         }"/>
         <UiButton :data="{
-          title: 'Send request',
+          title: 'Approve',
           type: 'submit'
         }"/>
       </form>
@@ -26,7 +21,6 @@
 <script setup lang="ts">
 import { useAppModel } from '@/entities/app'
 import { PopUp } from '@/entities/popup'
-import { UiTextArea } from '@/shared/ui/textarea'
 import { UiButton } from '@/shared/ui/button'
 import { UISelect } from "@/shared/ui/select";
 import { lock, unlock } from "@/shared/lib/ustils/isBlockScroll";
@@ -35,10 +29,10 @@ const app = useAppModel()
 
 
 const closeSupport = () => {
-  app.updateShowSupport(false)
+  app.updateShowAddEmployee(false)
 };
 
-watch(() => app.showSupport, (value) => {
+watch(() => app.showAddEmployee, (value) => {
   if (value) {
     lock()
   } else {

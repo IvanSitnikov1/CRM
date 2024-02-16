@@ -9,6 +9,7 @@ export const useAppModel = defineStore({
       showNavigation: false,
       showFab: false,
       showSupport: false,
+      showAddEmployee: false,
     },
 
   getters: {
@@ -20,11 +21,13 @@ export const useAppModel = defineStore({
 
   actions: {
     toggleShowMenu(): void {
-      console.log(this.showNavigation)
       this.showNavigation = !this.showNavigation;
     },
     updateShowMenu(value: boolean): void {
       this.showNavigation = value;
+    },
+    updateShowAddEmployee(value: boolean): void {
+      this.showAddEmployee = value;
     },
     updateShowFab(value: boolean): void {
       this.showFab = value;

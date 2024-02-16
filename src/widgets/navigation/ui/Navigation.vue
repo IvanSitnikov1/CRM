@@ -51,10 +51,10 @@ const router = useRouter()
 
 import { useAppModel } from '@/entities/app'
 import { NavigationToggle } from '@/features/navigation'
-import IconBase from "@/shared/ui/icon-base/ui/IconBase.vue";
+import { IconBase } from "@/shared/ui/icon-base";
+import { lock, unlock } from "@/shared/lib/ustils/isBlockScroll";
 
 const app = useAppModel()
-
 const isCurrentRoute = (path: string) => router.currentRoute.value.path === path;
 const colorItem = (value: boolean) => value ? '#3F8CFF' : '#7D8592'
 
@@ -66,6 +66,15 @@ const showSupport = () => {
   app.updateShowMenu(false)
   app.updateShowSupport(true)
 }
+
+watch(() => app.showNavigation, (value) => {
+  if (value) {
+    lock()
+  } else {
+    unlock()
+  }
+})
+
 </script>
 
 

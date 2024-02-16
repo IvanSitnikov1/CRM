@@ -13,6 +13,7 @@
                     <li
                         v-for="(item, index) in fabConfig"
                         :key="index"
+                        @click="addSomething"
                         class="fab-content__element"
                     >
                         <div class="fab-content__image-container">
@@ -43,6 +44,11 @@ const app = useAppModel();
 const open = () => {
   lock();
 };
+
+const addSomething = () => {
+  console.log('test')
+  app.updateShowAddEmployee(true)
+}
 
 const close = () => {
   app.updateShowFab(false);

@@ -2,7 +2,13 @@
   <article>
     <label for="format" class="select__label">Request Subject</label>
     <div class="select__container">
-      <select class="select" name="format" id="format" @focus="handleFocus" @blur="handleBlur">
+      <select class="select"
+              name="format"
+              id="format"
+              :multiple="data.isMultipleSelect"
+              @focus="handleFocus"
+              @blur="handleBlur"
+      >
         <option value="pdf">PDF</option>
         <option value="txt">txt</option>
         <option value="epub">ePub</option>
