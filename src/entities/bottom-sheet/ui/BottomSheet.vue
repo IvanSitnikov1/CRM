@@ -42,7 +42,7 @@ const props = defineProps<{
   data: IBottomSheet
 }>()
 
-const emit = defineEmits(['onClose'])
+const emit = defineEmits(['onClose','onOpen'])
 
 const y = ref(0);
 const dragging = ref(false);
@@ -52,12 +52,9 @@ const startClientY = ref(0);
 const handleDown = (event: MouseEvent | TouchEvent) => {
   dragging.value = true;
   startClientY.value = event instanceof MouseEvent ? event.clientY : event.touches[0].clientY;
-  console.log('touch')
-  console.log(dragging.value)
 };
 
 const handleMove = (event: MouseEvent | TouchEvent) => {
-  console.log(!event instanceof TouchEvent)
   if (!dragging.value && !event instanceof TouchEvent) {
     return;
   }
@@ -73,6 +70,12 @@ const handleUp = () => {
 const closeBottomSheet = () => {
   emit('onClose')
 };
+
+watch(() => props.data.open, (value) => {
+  if (value) {
+    emit('onOpen')
+  }
+})
 </script>
 
 <style lang="scss">

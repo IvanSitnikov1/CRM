@@ -78,9 +78,9 @@
                                 iconName: 'calendar',
                             }"
                         />
-                        <span class="project-description__created-data">
-                            Created {May 28, 2020}
-                        </span>
+                        <time class="project-description__created-data">
+                            Created May 28, 2020
+                        </time>
                     </div>
                 </main>
                 <footer class="project-description__footer">
