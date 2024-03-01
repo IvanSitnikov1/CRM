@@ -5,7 +5,7 @@
   >
     <IconBase
       :data="{
-                iconName: 'menu',
+                iconName: data.iconName,
                 iconColor: data.color
             }"
     />

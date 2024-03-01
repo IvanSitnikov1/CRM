@@ -3,7 +3,6 @@
 
   <section class="home-page">
     <div class="wrapper wrapper_title wrapper_small-margin home-page__welcome-text">Welcome back, Evan!</div>
-    <button type="submit" @click="testToast">Toast</button>
     <HeaderPage />
     <Workload />
     <Projects />
@@ -19,17 +18,11 @@ import { History } from '@/widgets/history'
 import { Projects } from '@/widgets/projects'
 import { Events } from '@/widgets/events'
 import { HeaderPage } from '@/entities/header-page'
-import { useToast } from "vue-toastification";
+
 
 useHead({
   title: 'CRM - Dashboard'
 })
-
-const toast = useToast();
-
-const testToast = () => {
-  toast.info("I'm an info toast!")
-}
 
 /*onBeforeUnmount(() => {
   bookModel.$reset()

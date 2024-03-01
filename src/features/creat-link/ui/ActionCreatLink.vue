@@ -2,25 +2,20 @@
     <ActionButton
         @click="handlerTest"
         :data="{
-            iconName: 'search',
-            color: '#15C0E6',
+            iconName: 'link',
+            color: '#15C0E6'
         }"
     />
 </template>
 
 <script setup lang="ts">
 import { ActionButton } from '@/shared/ui/action-button';
-import { useCustomWebNotification } from '@/shared/lib/ustils/notification';
+import { useToast } from 'vue-toastification'
 
-const { isSupported, show: showNotification } = useCustomWebNotification();
+const toast = useToast();
 
 const handlerTest = () => {
-  if (isSupported.value) {
-    showNotification({
-      title: 'Custom Notification',
-      body: 'Create Test User!'
-    });
-  }
+  toast.info("Пока не работает!")
 };
 
 </script>

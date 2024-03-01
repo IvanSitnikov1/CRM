@@ -20,6 +20,9 @@ export type IconName =
   'employees' |
   'messenger' |
   'priority' |
+  'edit' |
+  'attach' |
+  'link' |
   'clock';
 
 export type Priority = 'small' | 'medium' | 'large';

@@ -22,14 +22,7 @@
                         <span class="project-description__title">Project Number</span>
                         <span class="project-description__id">PN0001245</span>
                     </div>
-                    <article class="edit">
-                        <IconBase
-                            :data="{
-                                iconName: 'menu',
-                                iconColor: '#0A1629',
-                            }"
-                        />
-                    </article>
+                    <ActionEdit />
                 </header>
                 <main>
                     <Title
@@ -105,6 +98,7 @@ import { ActionAddFile } from '@/features/add-file';
 import { Avatars } from '@/shared/ui/avatars';
 import { ActionButton } from '@/shared/ui/action-button';
 import { ActionCreatLink } from "@/features/creat-link";
+import { ActionEdit } from '@/features/edit'
 
 useHead({
   title: 'Project details'
