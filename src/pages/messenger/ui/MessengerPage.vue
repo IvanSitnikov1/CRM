@@ -1,8 +1,6 @@
 <template>
   <section class="projects-page">
-    <Header class="wrapper wrapper_title" :data="{
-      title: 'Messenger'
-    }"/>
+    <HeaderPage />
     <div class="wrapper_big">
       <div class="projects-page__content">
         <div class="projects-page__header">
@@ -56,10 +54,17 @@
 
 <script setup lang="ts">
 import { Collapse } from '@/shared/ui/collaps'
-import { Header } from '@/shared/ui/header'
 import { Title } from '@/shared/ui/title'
+import { IconBase } from '@/shared/ui/icon-base'
 import { CardMessage } from "@/entities/message";
-import IconBase from "@/shared/ui/icon-base/ui/IconBase.vue";
+import { HeaderPage } from '@/entities/header-page'
+import { useHead } from '@unhead/vue'
+
+useHead({
+  title: 'CRM - Messenger'
+})
+
+
 
 const state = reactive({
   groups: true,

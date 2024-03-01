@@ -1,19 +1,6 @@
 <template>
     <section class="projects-page">
-        <PopUp
-            :data="{
-                open: false,
-                title: 'Select project',
-            }"
-        >
-            <template #content />
-        </PopUp>
-        <Header
-            class="wrapper wrapper_title"
-            :data="{
-                title: 'Projects',
-            }"
-        />
+        <HeaderPage />
         <main class="wrapper">
             <CardProjectSmall
                 class="projects-page__current-project"
@@ -162,6 +149,14 @@
                 </Collapse>
             </div>
         </main>
+        <PopUp
+          :data="{
+                  open: false,
+                  title: 'Select project',
+              }"
+        >
+          <template #content />
+        </PopUp>
     </section>
 </template>
 
@@ -174,6 +169,7 @@ import { Title } from '@/shared/ui/title';
 import { Collapse } from '@/shared/ui/collaps';
 import { CardTask } from '@/entities/task';
 import { IconBase } from "@/shared/ui/icon-base";
+import { HeaderPage } from '@/entities/header-page'
 
 useHead({
   title: 'Projects'

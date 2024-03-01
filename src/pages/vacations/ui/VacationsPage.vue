@@ -1,8 +1,6 @@
 <template>
   <section class="projects-page">
-    <Header class="wrapper wrapper_title" :data="{
-      title: 'Vacations'
-    }"/>
+      <HeaderPage />
       <div class="wrapper">
         <div class="projects-page__employees">
           <CardEmployee
@@ -40,10 +38,8 @@
 
 <script setup lang="ts">
 import { useHead } from '@unhead/vue'
-import { TimePicker } from '@/shared/ui/time-picker'
-import { PopUp } from '@/entities/popup'
-import { Header } from '@/shared/ui/header'
 import { CardEmployee } from '@/entities/employee'
+import { HeaderPage } from '@/entities/header-page'
 
 useHead({
   title: 'Projects'

@@ -1,8 +1,6 @@
 <template>
   <section class="employees-page">
-    <Header class="wrapper wrapper_title" :data="{
-      title: 'Employees'
-    }"/>
+    <HeaderPage />
     <div class="wrapper">
       <Tabs :data="{
         tabs: tabs,
@@ -109,10 +107,13 @@ import { CardEmployee } from '@/entities/employee'
 import { Tag } from '@/shared/ui/tag'
 import { Tabs } from '@/shared/ui/tabs'
 import { Card } from '@/entities/user'
+import { HeaderPage } from '@/entities/header-page'
+
 
 useHead({
-  title: 'Employees'
+  title: 'CRM - Employees'
 })
+
 
 const generateHours = () => new Array(700).fill(1).map((v, i) => {
   return { id: i + 1, text: i + 1}

@@ -7,18 +7,20 @@ export const routes = [
   },
   {
     path: '/nears-events',
-    name: 'vents',
     component: () => import('@/pages/nearest-events'),
+    name: 'nears-events',
     meta: { requiresAuth: true }
   },
   {
     path: '/calendar',
     component: () => import('@/pages/calendar'),
+    name: 'calendar',
     meta: { requiresAuth: true }
   },
   {
     path: '/projects',
     component: () => import('@/pages/progects'),
+    name: 'projects',
     meta: { requiresAuth: true }
   },
   {
@@ -29,15 +31,18 @@ export const routes = [
   {
     path: '/vacations',
     component: () => import('@/pages/vacations'),
+    name: 'vacations',
     meta: { requiresAuth: true }
   },
   {
     path: '/employees',
+    name: 'employees',
     component: () => import('@/pages/employees'),
     meta: { requiresAuth: true }
   },
   {
     path: '/messenger',
+    name: 'messenger',
     component: () => import('@/pages/messenger'),
     meta: { requiresAuth: true }
   },
@@ -47,6 +52,13 @@ export const routes = [
   },
   {
     path: '/profile',
+    name: 'profile',
+    component: () => import('@/pages/profile'),
+    meta: { requiresAuth: true }
+  },
+  {
+    path: '/my-profile',
+    name: 'my-profile',
     component: () => import('@/pages/profile'),
     meta: { requiresAuth: true }
   },

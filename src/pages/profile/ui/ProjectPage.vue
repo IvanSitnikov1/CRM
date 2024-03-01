@@ -1,11 +1,6 @@
 <template>
     <section class="profile-page">
-        <Header
-            class="wrapper wrapper_title"
-            :data="{
-                title: 'Employee’s Profile',
-            }"
-        />
+        <HeaderPage />
         <div class="wrapper">
             <article class="about-user profile-page__about-user">
                 <header class="about-user__header">
@@ -162,17 +157,17 @@
 
 <script setup lang="ts">
 import { useHead } from '@unhead/vue';
-import { Header } from '@/shared/ui/header';
 import { Title } from '@/shared/ui/title';
 import { CircleProgressBar } from '@/shared/ui/circle-progress-bar';
 import { UIInput } from '@/shared/ui/input';
 import { Tabs } from '@/shared/ui/tabs';
 import { Card } from '@/entities/user';
-import CardProject from '../../../entities/project/ui/card/CardProject.vue';
-import NotFound from '@/pages/not-found';
+import { HeaderPage } from '@/entities/header-page'
+import NotFound from '@/pages/not-found'
+import { CardProject } from '@/entities/project'
 
 useHead({
-  title: 'Profile'
+  title: 'CRM - Profile'
 });
 
 const tabs = [

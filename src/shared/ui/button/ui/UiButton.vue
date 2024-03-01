@@ -1,7 +1,7 @@
 <template>
   <button class="button" :class="{'button_full': data.isFull }" :type="data.type">
     <IconBase v-if="data.iconNameLeft" :data="{
-      iconName: ''
+      iconName: data.iconNameLeft
     }">
       <slot name="icon-left">
       </slot>
@@ -10,7 +10,7 @@
       {{ data.title }}
     </span>
     <IconBase v-if="data.iconNameRight" :data="{
-      iconName: ''
+      iconName: data.iconNameRight
     }">
       <slot name="icon-right">
       </slot>

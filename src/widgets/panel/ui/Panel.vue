@@ -29,7 +29,7 @@ import IconBase from "@/shared/ui/icon-base/ui/IconBase.vue";
 const router = useRouter()
 
 const handlerGoToProfile = () => {
-  router.push({ path: '/profile' })
+  router.push({ path: '/my-profile' })
 }
 
 </script>
