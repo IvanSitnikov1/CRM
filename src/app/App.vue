@@ -50,7 +50,6 @@
 </template>
 
 <script setup lang="ts">
-import { useRoute } from 'vue-router';
 import { Panel } from '@/widgets/panel';
 import { Navigation } from '@/widgets/navigation';
 import { FabBottomSheet } from '@/widgets/fab';
@@ -58,9 +57,6 @@ import { ActionPlus } from '@/features/action-plus';
 import { Support } from '@/widgets/support';
 import { isAuthenticated } from '@/shared/lib/ustils/isAutorise';
 import { AddEmployee } from '@/widgets/add-employee';
-
-const route = useRoute();
-
 </script>
 
 <style lang="scss">

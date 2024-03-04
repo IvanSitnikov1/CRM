@@ -65,7 +65,10 @@ const handleMove = (event: MouseEvent | TouchEvent) => {
 
 const handleUp = () => {
   dragging.value = false;
-  y.value = 0;
+  if (y.value > window.innerHeight * 0.25) {
+    emit('onClose')
+  }
+  y.value = 0
 };
 const closeBottomSheet = () => {
   emit('onClose')

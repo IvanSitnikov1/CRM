@@ -3,7 +3,7 @@
         @onClose="close"
         @onOpen="open"
         :data="{
-            open: app.showFab,
+            open: state.showAdd,
             title: 'Add..',
         }"
     >
@@ -33,25 +33,27 @@
 </template>
 
 <script setup lang="ts">
+import { storeToRefs } from 'pinia';
 import { BottomSheet } from '@/entities/bottom-sheet';
-import { useAppModel } from '@/entities/app';
 import { fabConfig } from '@/widgets/fab';
 import { IconBase } from '@/shared/ui/icon-base';
 import { lock, unlock } from '@/shared/lib/ustils/isBlockScroll';
+import { useModalStore } from '@/entities/add-modal';
 
-const app = useAppModel();
+const modalStore = useModalStore();
+
+const { state } = storeToRefs(modalStore);
 
 const open = () => {
   lock();
 };
 
 const addSomething = () => {
-  console.log('test')
-  app.updateShowAddEmployee(true)
-}
+  state.value.showAddEvent = true;
+};
 
 const close = () => {
-  app.updateShowFab(false);
+  state.value.showAdd = false;
   unlock();
 };
 </script>

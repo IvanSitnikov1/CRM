@@ -1,39 +1,46 @@
 <template>
-
-
-  <section class="home-page">
-    <div class="wrapper wrapper_title wrapper_small-margin home-page__welcome-text">Welcome back, Evan!</div>
-    <HeaderPage />
-    <Workload />
-    <Projects />
-    <Events />
-    <History />
-  </section>
+    <section class="home-page">
+        <div class="wrapper wrapper_title wrapper_small-margin">
+            <Title
+                class="home-page__welcome-title"
+                :data="{
+                    title: 'Welcome back, Evan!',
+                    size: 'small',
+                    isHighLeading: true,
+                    marginBottom: 'small',
+                }"
+            />
+        </div>
+        <HeaderPage />
+        <Workload />
+        <Projects />
+        <Events />
+        <History />
+    </section>
 </template>
 
 <script setup lang="ts">
-import { useHead } from '@unhead/vue'
-import { Workload } from '@/widgets/workload'
-import { History } from '@/widgets/history'
-import { Projects } from '@/widgets/projects'
-import { Events } from '@/widgets/events'
-import { HeaderPage } from '@/entities/header-page'
-
+import { useHead } from '@unhead/vue';
+import { Workload } from '@/widgets/workload';
+import { History } from '@/widgets/history';
+import { Projects } from '@/widgets/projects';
+import { Events } from '@/widgets/events';
+import { HeaderPage } from '@/entities/header-page';
+import { Title } from '@/shared/ui/title';
 
 useHead({
   title: 'CRM - Dashboard'
-})
+});
 
-/*onBeforeUnmount(() => {
+/* onBeforeUnmount(() => {
   bookModel.$reset()
-})*/
+}) */
 </script>
 
 <style lang="scss">
 .home-page {
-  &__welcome-text {
+  &__welcome-title {
     color: #7D8592;
-    font-size: 16px;
   }
 }
 .calendar-input {

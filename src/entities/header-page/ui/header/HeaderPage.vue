@@ -32,7 +32,3 @@ const getHeaderTitle = computed(() =>{
   return titleConfig?.title ?? 'Error'
 })
 </script>
-
-<style lang="scss">
- @import "style.module";
-</style>

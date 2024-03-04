@@ -1,3 +1,3 @@
-import ActionPlus from './ui/ActionPlus.vue'
+import ActionPlus from './ui/ActionPlus.vue';
 
-export { ActionPlus }
+export { ActionPlus };

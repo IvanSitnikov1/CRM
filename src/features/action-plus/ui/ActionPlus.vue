@@ -1,24 +1,38 @@
 <template>
     <article
         class="actions"
-        @click="handlerOpenAddModal($route.path)"
+        @click="handlerOpenAddModal($route)"
     >
         <span class="actions__plus">+</span>
     </article>
 </template>
 
 <script setup lang="ts">
-import { useAppModel } from '@/entities/app';
+import { type IModalType, useModalStore } from '@/entities/add-modal'
 
-const app = useAppModel();
+const modalStore = useModalStore();
+
+type ConfigItem = {
+  route: string;
+  type: IModalType
+}
+const config: ConfigItem[] = [
+  { route: 'home', type: 'all' },
+  { route: 'nears-events', type: 'event' },
+  { route: 'calendar', type: 'event' },
+  { route: 'projects', type: 'project' },
+  { route: 'vacations', type: 'request' },
+  { route: 'employees', type: 'employee' },
+  { route: 'profile', type: 'all' },
+  { route: 'my-profile', type: 'all' },
+]
+
+const { openModalAdd } = modalStore;
+
 const handlerOpenAddModal = path => {
-  switch (path) {
-    case '/':
-      app.updateShowFab(true);
-      break;
-    default:
-      console.log('Пока не готов');
-  }
+  const currentRoute = path.name;
+  const modalType = config.find(item => item.route === currentRoute).type;
+  openModalAdd(modalType)
 };
 </script>
 

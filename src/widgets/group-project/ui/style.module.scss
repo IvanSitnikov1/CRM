@@ -1,0 +1,30 @@
+.group-project {
+  &__inner-groups {
+    display: flex;
+    flex-direction: column;
+    row-gap: 12px;
+    margin-bottom: 32px;
+  }
+  &__group {
+    border-radius: 14px;
+    background: rgb(230, 237, 245);
+    padding: 12px 0;
+    margin-bottom: 20px;
+    transition: background-color ease .4s;
+    &_active {
+      background: rgb(63, 140, 255);
+    }
+  }
+  &__tasks {
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+  }
+  &__group-name {
+    max-width: max-content;
+    margin: 0 auto;
+    &_active {
+      color: white;
+    }
+  }
+}
