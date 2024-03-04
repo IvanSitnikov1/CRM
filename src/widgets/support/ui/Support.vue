@@ -1,8 +1,10 @@
 <template>
-  <PopUp @onClose="closeSupport" :data="{
-    title: 'Need some Help?',
-    open: app.showSupport
-  }">
+  <PopUp @onClose="closeSupport"
+         @onOpen="openSupport"
+         :data="{
+            title: 'Need some Help?',
+            open: app.showSupport
+          }">
     <template #content>
       <form class="support">
         <p class="support__text">
@@ -36,15 +38,12 @@ const app = useAppModel()
 
 const closeSupport = () => {
   app.updateShowSupport(false)
+  unlock()
 };
 
-watch(() => app.showSupport, (value) => {
-  if (value) {
-    lock()
-  } else {
-    unlock()
-  }
-})
+const openSupport = () => {
+  lock()
+};
 </script>
 
 

@@ -43,11 +43,17 @@ const props = defineProps<{
 }>()
 
 const isReaching = computed(() => y.value >= 134 )
-const emit = defineEmits(['onClose'])
+const emit = defineEmits(['onClose', 'onOpen'])
 
 const closePopUp = () => {
   emit('onClose')
 };
+
+onUpdated(() => {
+  if (props.data.open) {
+    emit('onOpen');
+  }
+});
 </script>
 
 <style lang="scss">

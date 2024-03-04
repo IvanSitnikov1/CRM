@@ -7,9 +7,7 @@ export const useAppModel = defineStore({
   state: () =>
     <IBookModel>{
       showNavigation: false,
-      showFab: false,
       showSupport: false,
-      showAddEmployee: false,
     },
 
   getters: {
@@ -25,12 +23,6 @@ export const useAppModel = defineStore({
     },
     updateShowMenu(value: boolean): void {
       this.showNavigation = value;
-    },
-    updateShowAddEmployee(value: boolean): void {
-      this.showAddEmployee = value;
-    },
-    updateShowFab(value: boolean): void {
-      this.showFab = value;
     },
     updateShowSupport(value: boolean): void {
       this.showSupport = value;

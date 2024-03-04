@@ -1,8 +1,10 @@
 <template>
-  <PopUp @onClose="closeSupport" :data="{
-    title: 'Add Employee?',
-    open: app.showAddEmployee
-  }">
+  <PopUp @onClose="closeAddEmployee"
+         @onOpen="openAddEmployee"
+         :data="{
+            title: 'Add Employee?',
+            open: state.showAddEmployee
+          }">
     <template #content>
       <form class="support">
         <UISelect :data="{
@@ -19,26 +21,23 @@
 </template>
 
 <script setup lang="ts">
-import { useAppModel } from '@/entities/app'
 import { PopUp } from '@/entities/popup'
 import { UiButton } from '@/shared/ui/button'
 import { UISelect } from "@/shared/ui/select";
 import { lock, unlock } from "@/shared/lib/ustils/isBlockScroll";
+import { useModalStore } from '@/entities/add-modal'
+import { storeToRefs } from 'pinia'
 
-const app = useAppModel()
+const modalStore = useModalStore();
 
-
-const closeSupport = () => {
-  app.updateShowAddEmployee(false)
+const { state } = storeToRefs(modalStore);
+const closeAddEmployee = () => {
+  state.value.showAddEmployee = false
+  unlock()
 };
-
-watch(() => app.showAddEmployee, (value) => {
-  if (value) {
-    lock()
-  } else {
-    unlock()
-  }
-})
+const openAddEmployee = () => {
+  lock()
+};
 </script>
 
 

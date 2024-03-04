@@ -49,7 +49,8 @@ const open = () => {
 };
 
 const addSomething = () => {
-  state.value.showAddEvent = true;
+  state.value.showAddEmployee = true;
+  close();
 };
 
 const close = () => {

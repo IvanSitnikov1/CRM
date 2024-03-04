@@ -46,6 +46,7 @@
         <FabBottomSheet />
         <Support />
         <AddEmployee />
+        <AddRequest />
     </section>
 </template>
 
@@ -57,6 +58,7 @@ import { ActionPlus } from '@/features/action-plus';
 import { Support } from '@/widgets/support';
 import { isAuthenticated } from '@/shared/lib/ustils/isAutorise';
 import { AddEmployee } from '@/widgets/add-employee';
+import { AddRequest } from '@/widgets/add-request'
 </script>
 
 <style lang="scss">
