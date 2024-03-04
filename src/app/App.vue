@@ -47,6 +47,7 @@
         <Support />
         <AddEmployee />
         <AddRequest />
+        <AddTask />
     </section>
 </template>
 
@@ -59,6 +60,7 @@ import { Support } from '@/widgets/support';
 import { isAuthenticated } from '@/shared/lib/ustils/isAutorise';
 import { AddEmployee } from '@/widgets/add-employee';
 import { AddRequest } from '@/widgets/add-request'
+import { AddTask } from '@/widgets/add-task'
 </script>
 
 <style lang="scss">

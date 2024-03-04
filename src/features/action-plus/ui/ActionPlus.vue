@@ -20,7 +20,7 @@ const config: ConfigItem[] = [
   { route: 'home', type: 'all' },
   { route: 'nears-events', type: 'event' },
   { route: 'calendar', type: 'event' },
-  { route: 'projects', type: 'project' },
+  { route: 'projects', type: 'task' },
   { route: 'vacations', type: 'request' },
   { route: 'employees', type: 'employee' },
   { route: 'profile', type: 'all' },
