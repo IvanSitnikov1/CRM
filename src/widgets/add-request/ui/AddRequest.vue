@@ -6,17 +6,62 @@
             open: state.showAddRequest
           }">
     <template #content>
-        <Tabs :data="{
+        <Tabs
+          :data="{
             tabs: tabs,
             activeTab: store.activeTab
-          }" @onTab="handlerChangeTab">
+          }"
+          @onTab="handlerChangeTab"
+        >
           <template #Days>
-            Дни
+            <hr>
+            <DataPiker :data="{}"/>
+            <hr>
           </template>
           <template #Hours>
-            Часы
+            <hr>
+            <DataPiker :data="{}"/>
+            <hr>
+            <div class="add-request__time">
+              <UIInput
+                :data="{
+                  type: 'text',
+                  title: 'From',
+                  placeholder: '9:00 AM',
+                  iconName: 'clock',
+                  isReadonly: true,
+                  name: 'from'
+                }"
+              />
+              <UIInput
+                :data="{
+                  type: 'text',
+                  title: 'To',
+                  placeholder: '1:00 AM',
+                  iconName: 'clock',
+                  isReadonly: true,
+                  name: 'from'
+                }"
+              />
+            </div>
           </template>
         </Tabs>
+
+    </template>
+    <template #bottom>
+      <div class="add-request__actions">
+        <ActionButton
+          class="add-request__comment"
+          :data="{
+             iconName: 'edit'
+          }"/>
+        <UiButton
+          :data="{
+            type: 'button',
+            isFull: true,
+            title: 'Send Request'
+          }"/>
+      </div>
     </template>
   </PopUp>
 </template>
@@ -24,12 +69,13 @@
 <script setup lang="ts">
 import { PopUp } from '@/entities/popup'
 import { UiButton } from '@/shared/ui/button'
-import { UISelect } from "@/shared/ui/select";
 import { lock, unlock } from "@/shared/lib/ustils/isBlockScroll";
 import { useModalStore } from '@/entities/add-modal'
 import { storeToRefs } from 'pinia'
-import { Calendar } from '@/widgets/calendar'
 import { Tabs } from '@/shared/ui/tabs'
+import { UIInput } from '@/shared/ui/input'
+import { DataPiker } from '@/shared/ui/data-picker'
+import { ActionButton } from '@/shared/ui/action-button'
 
 const modalStore = useModalStore();
 
@@ -61,6 +107,4 @@ const openAddRequest = () => {
 
 <style lang="scss">
   @import "style.module";
-
-
 </style>

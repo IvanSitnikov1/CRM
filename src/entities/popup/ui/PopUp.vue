@@ -21,9 +21,11 @@
               }"/>
             </header>
             <main class="pop-up__main">
-              <slot name="content">
-              </slot>
+              <slot name="content"/>
             </main>
+            <footer class="pop-up__bottom">
+              <slot name="bottom"/>
+            </footer>
           </section>
       </aside>
     </transition>

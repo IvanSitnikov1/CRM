@@ -40,6 +40,11 @@
       border-radius: 0;
     }
   }
+  &__bottom {
+    position: sticky;
+    z-index: 30;
+    bottom: -76px;
+  }
   &__close {
     position: absolute;
     right: 16px;
