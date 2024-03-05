@@ -6,9 +6,18 @@
             open: state.showAddRequest
           }">
     <template #content>
+        <div class="add-request__radio">
+          <Radio
+            :data="{
+                    categories: ['Vacation', 'Stick Leave'],
+                    title: 'Request Type',
+                }"
+          />
+        </div>
         <Tabs
           :data="{
             tabs: tabs,
+            marginCorner: 'medium',
             activeTab: store.activeTab
           }"
           @onTab="handlerChangeTab"
@@ -24,7 +33,7 @@
             <hr>
             <div class="add-request__time">
               <UIInput
-                :data="{
+                    :data="{
                   type: 'text',
                   title: 'From',
                   placeholder: '9:00 AM',
@@ -46,7 +55,6 @@
             </div>
           </template>
         </Tabs>
-
     </template>
     <template #bottom>
       <div class="add-request__actions">
@@ -76,6 +84,7 @@ import { Tabs } from '@/shared/ui/tabs'
 import { UIInput } from '@/shared/ui/input'
 import { DataPiker } from '@/shared/ui/data-picker'
 import { ActionButton } from '@/shared/ui/action-button'
+import { Radio } from '@/shared/ui/radio'
 
 const modalStore = useModalStore();
 

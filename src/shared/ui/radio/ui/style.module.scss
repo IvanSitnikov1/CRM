@@ -1,0 +1,54 @@
+.radio {
+  &__group {
+    display: flex;
+    flex-direction: column;
+    row-gap: 12px;
+  }
+  &__title {
+    margin-bottom: 20px;
+    font-weight: 700;
+  }
+  &__element {
+    &_real {
+      width: 0;
+      height: 0;
+      opacity: 0;
+      position: absolute;
+      z-index: -1;
+    }
+    &_custom {
+      position: relative;
+      display: inline-block;
+      width: 16px;
+      height: 16px;
+      background: #ffffff;
+      border: 2px solid rgb(10, 22, 41);
+      vertical-align: sub;
+      border-radius: 50%;
+      margin-right: 5px;
+      &:before {
+        content: '';
+        display: inline-block;
+        width: 24px;
+        height: 24px;
+        background-image: url('../../../assets/specialIcons/radio.svg');
+        background-size: contain;
+        background-repeat: no-repeat;
+
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%) scale(0);
+
+        transition: 0.2s ease-in;
+      }
+    }
+    &_real:focus + &_custom {
+      box-shadow: 0 0 0 1px #38577a, 0 0 10px #7e9bbd;
+    }
+
+    &_real:checked + &_custom::before {
+      transform: translate(-50%, -50%) scale(1);
+    }
+  }
+}

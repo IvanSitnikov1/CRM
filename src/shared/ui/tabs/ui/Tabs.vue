@@ -1,6 +1,6 @@
 <template>
   <article class="tab">
-    <div class="tab__buttons">
+    <div :class="classes">
       <button v-for="(tab, index) in data.tabs"
               class="tab__button"
               :key="index" @click="changeTab(index)"
@@ -26,6 +26,20 @@ const emit = defineEmits(['onTab'])
 const props = defineProps<{
   data: ITabs
 }>()
+
+const classes = computed(() => {
+  const temp = [];
+  temp.push('tab__buttons')
+  switch (props.data.marginCorner) {
+    case 'medium':
+      temp.push('tab__buttons_medium')
+      break;
+    case 'small':
+      temp.push('tab__buttons_small')
+      break;
+  }
+  return temp;
+})
 
 const changeTab = (index: number) => {
   emit('onTab', index)

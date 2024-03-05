@@ -1,5 +1,5 @@
 <template>
-  <article class="project" v-for="index in 3" :key="index">
+  <article class="project">
     <div class="project__header">
       <div class="project__category">
         <img class="project__image" src="@/shared/assets/projectThemFirst.png" alt="icon">

@@ -17,6 +17,7 @@
                         <Card
                             v-for="index in 6"
                             :key="index"
+                            @click="goToProfile"
                             :data="{
                                 isWhite: false,
                                 isBox: false,
@@ -40,8 +41,8 @@ import { TitleWithLink } from '@/entities/grop-title';
 
 const router = useRouter();
 
-const goToHome = () => {
-  router.push({ path: '/' });
+const goToProfile = () => {
+  router.push({ path: '/profile' });
 };
 
 </script>
