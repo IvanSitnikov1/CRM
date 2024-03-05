@@ -3,76 +3,79 @@
         @onClose="closeAddTask"
         @onOpen="openAddTask"
         :data="{
-            title: 'Add Employee?',
+            title: 'Add Task?',
             open: state.showAddTask,
         }"
     >
         <template #content>
-          <form class="add-task__form" action="">
-            <UIInput
-              :data="{
-                  type: 'text',
-                  title: 'Task Name',
-                  placeholder: '1:00 AM',
-                  iconName: 'clock',
-                  isReadonly: true,
-                  name: 'task'
-                }"
-            />
-            <UISelect
-              :data="{
+            <form
+                class="add-task__form"
+                action=""
+            >
+                <UIInput
+                    :data="{
+                        type: 'text',
+                        title: 'Task Name',
+                        placeholder: '1:00 AM',
+                        iconName: 'clock',
+                        isReadonly: true,
+                        name: 'task',
+                    }"
+                />
+                <UISelect
+                    :data="{
                         text: '',
                     }"
-            />
-            <UIInput
-              :data="{
-                  type: 'text',
-                  title: 'Task Name',
-                  placeholder: '1:00 AM',
-                  iconName: 'clock',
-                  isReadonly: true,
-                  name: 'task'
-                }"
-            />
-            <UIInput
-              :data="{
-                  type: 'text',
-                  title: 'Task Name',
-                  placeholder: '1:00 AM',
-                  iconName: 'clock',
-                  isReadonly: true,
-                  name: 'task'
-                }"
-            />
-            <UISelect
-              :data="{
+                />
+                <UIInput
+                    :data="{
+                        type: 'text',
+                        title: 'Task Name',
+                        placeholder: '1:00 AM',
+                        iconName: 'clock',
+                        isReadonly: true,
+                        name: 'task',
+                    }"
+                />
+                <UIInput
+                    :data="{
+                        type: 'text',
+                        title: 'Task Name',
+                        placeholder: '1:00 AM',
+                        iconName: 'clock',
+                        isReadonly: true,
+                        name: 'task',
+                    }"
+                />
+                <UISelect
+                    :data="{
                         text: '',
                     }"
-            />
-            <UISelect
-              :data="{
+                />
+                <UISelect
+                    :data="{
                         text: '',
                     }"
-            />
-            <UiTextArea
-              :data="{
+                />
+                <UiTextArea
+                    :data="{
                         name: 'task',
                         title: 'Description',
                         placeholder: 'Add some description of the request',
                     }"
-            />
-          </form>
+                />
+            </form>
         </template>
         <template #bottom>
-          <div class="add-task__save">
-            <UiButton
-              :data="{
-              title: 'Save Task',
-              type: 'submit',
-              isFull: true
-            }"
-            />
-          </div>
+            <div class="add-task__save">
+                <UiButton
+                    :data="{
+                        title: 'Save Task',
+                        type: 'submit',
+                        isFull: true,
+                    }"
+                />
+            </div>
         </template>
     </PopUp>
 </template>
@@ -84,14 +87,14 @@ import { UiButton } from '@/shared/ui/button';
 import { UISelect } from '@/shared/ui/select';
 import { lock, unlock } from '@/shared/lib/ustils/isBlockScroll';
 import { useModalStore } from '@/entities/add-modal';
-import { Link } from '@/shared/ui/link'
-import { UIInput } from '@/shared/ui/input'
-import { UiTextArea } from '@/shared/ui/textarea'
+import { Link } from '@/shared/ui/link';
+import { UIInput } from '@/shared/ui/input';
+import { UiTextArea } from '@/shared/ui/textarea';
 
 const modalStore = useModalStore();
 
 const { state } = storeToRefs(modalStore);
-const closeAddTask= () => {
+const closeAddTask = () => {
   state.value.showAddTask = false;
   unlock();
 };

@@ -1,6 +1,7 @@
 .history {
   border-radius: 24px;
   background-color: #FFF;
+  overflow: hidden;
   box-shadow: 0 6px 58px 0 rgba(196, 203, 214, 0.10);
   &__actions {
     display: flex;

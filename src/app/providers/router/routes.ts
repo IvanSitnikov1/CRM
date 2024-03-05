@@ -29,6 +29,11 @@ export const routes = [
     meta: { requiresAuth: true }
   },
   {
+    path: '/projects/task',
+    component: () => import('@/pages/project-task'),
+    meta: { requiresAuth: true }
+  },
+  {
     path: '/vacations',
     component: () => import('@/pages/vacations'),
     name: 'vacations',

@@ -8,32 +8,32 @@
         }"
     >
         <template #content>
-                <div class="add-employee__list-member">
-                  <UISelect
+            <div class="add-employee__list-member">
+                <UISelect
                     :data="{
                         text: '',
                     }"
-                  />
-                </div>
-                <Link
-                  class="add-employee__add"
-                  :data="{
-                  title: 'Add another Member',
-                  to: '/',
-                  iconLeft: 'addEmployee'
-                }"/>
+                />
+            </div>
+            <Link
+                class="add-employee__add"
+                :data="{
+                    title: 'Add another Member',
+                    to: '/',
+                    iconLeft: 'addEmployee',
+                }"
+            />
         </template>
         <template #bottom>
-          <div class="add-employee__approve">
-            <UiButton
-              :data="{
-              title: 'Approve',
-              type: 'submit',
-              isFull: true
-            }"
-            />
-          </div>
-
+            <div class="add-employee__approve">
+                <UiButton
+                    :data="{
+                        title: 'Approve',
+                        type: 'submit',
+                        isFull: true,
+                    }"
+                />
+            </div>
         </template>
     </PopUp>
 </template>
@@ -45,7 +45,7 @@ import { UiButton } from '@/shared/ui/button';
 import { UISelect } from '@/shared/ui/select';
 import { lock, unlock } from '@/shared/lib/ustils/isBlockScroll';
 import { useModalStore } from '@/entities/add-modal';
-import { Link } from '@/shared/ui/link'
+import { Link } from '@/shared/ui/link';
 
 const modalStore = useModalStore();
 

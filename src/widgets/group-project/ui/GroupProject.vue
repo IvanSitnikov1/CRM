@@ -29,8 +29,9 @@
                     <template #content>
                         <div class="group-project__tasks">
                             <CardTask
-                                v-for="task in tasks"
-                                :key="task.id"
+                                v-for="(task, indexCard) in tasks"
+                                @click="handlerGoToTask"
+                                :key="indexCard"
                                 :data="task"
                             />
                         </div>
@@ -45,6 +46,7 @@
 import { Collapse } from '@/shared/ui/collaps';
 import { Title } from '@/shared/ui/title';
 import { CardTask } from '@/entities/task';
+import { router } from '@/app/providers';
 
 const state = reactive({
   expendedGrope: true,
@@ -79,6 +81,11 @@ const handlerExpandedTask = value => {
     state.expendedTasks.add(value);
   }
 };
+
+const handlerGoToTask = () => {
+  router.push({ path: '/projects/task' });
+};
+
 </script>
 
 <style scoped lang="scss">
