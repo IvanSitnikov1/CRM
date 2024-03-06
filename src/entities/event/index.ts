@@ -1,6 +1,6 @@
-import CardProject from './ui/card/CardEvent.vue'
+import CardEvent from './ui/card/CardEvent.vue'
 
 export * as BookApi from './api'
-export * from './config'
-export { CardProject }
+
+export { CardEvent }
 export { type IEventCard } from './model/types'

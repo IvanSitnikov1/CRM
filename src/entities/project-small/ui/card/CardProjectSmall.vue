@@ -28,9 +28,9 @@
 
 <script setup lang="ts">
 import { Title } from '@/shared/ui/title'
-import IconBase from "@/shared/ui/icon-base/ui/IconBase.vue";
-import Link from "@/shared/ui/link/ui/Link.vue";
-import type { IProjectSmall } from "@/entities/project-small/model/types";
+import type { IProjectSmall } from '@/entities/project-small'
+import { IconBase } from '@/shared/ui/icon-base'
+import { Link } from '@/shared/ui/link'
 
 const props = defineProps<{
   data: IProjectSmall
