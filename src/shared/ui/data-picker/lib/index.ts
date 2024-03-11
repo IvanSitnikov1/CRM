@@ -15,6 +15,7 @@ import {
 export interface DateInfo {
   day: number;
   isPrevMonth?: boolean;
+  timestamp: number;
   isCurrentMonth?: boolean;
   isNextMonth?: boolean;
   isSelected?: boolean;
@@ -54,6 +55,7 @@ export class Calendar {
 
         const dateInfo: DateInfo = {
           day: currentDate.getDate(),
+          timestamp: new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate()).getTime(),
           isPrevMonth: !isSameMonth(currentDate, this.currentDate) && currentDate < firstDayOfMonth,
           isCurrentMonth: isSameMonth(currentDate, this.currentDate),
           isNextMonth: !isSameMonth(currentDate, this.currentDate) && currentDate > lastDayOfMonth,

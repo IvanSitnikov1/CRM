@@ -67,9 +67,9 @@ const props = defineProps<{
   data: IIosSelect
 }>()
 
-console.log(selectWrapRef.value)
-const itemHeight = 900 / props.data.count;
-const itemAngle = 360 / props.data.source.length;
+
+const itemHeight = 900 / 20;
+const itemAngle = 360 / props.data.count;
 const radius = itemHeight / Math.tan((itemAngle * Math.PI) / 180);
 const a = props.data.sensitivity * 10;
 const quarterCount = props.data.count / 4;

@@ -1,3 +1,3 @@
-import HomePage from './ui/CalendarPage.vue'
+import CalendarPage from './ui/CalendarPage.vue';
 
-export default HomePage
+export default CalendarPage;

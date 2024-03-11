@@ -1,51 +1,108 @@
 <template>
-  <div class="wrapper">
-    <section class="calendar">
-      <DataPiker :data="{}"/>
-      <hr>
-      <Title class="calendar__title" :data="{
-      title: 'September 18, 2020',
-      size: 'small',
-      isHighLeading: true,
-      marginBottom: 'medium'
-    }"/>
-
-      <div class="calendar__events">
-        <article class="event-label calendar__event" v-for="index in 4" :key="index">
-          <div class="event-label__content">
-            <Title :data="{
-              title: 'Marc’s Birthday',
-              size: 'small',
-              isHighLeading: true,}"
+    <div class="wrapper">
+        <section class="calendar">
+            <DataPiker
+                :data="{
+                    events: state.events,
+                }"
             />
-            <div class="event-label__status">
-              <span class="event-label__time" >2h</span>
-              <svg class="event-label__priority" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                <path d="M12.6129 4.2097L12.7071 4.29289L17.7071 9.29289C18.0976 9.68342 18.0976 10.3166 17.7071 10.7071C17.3466 11.0676 16.7794 11.0953 16.3871 10.7903L16.2929 10.7071L13 7.415V19C13 19.5523 12.5523 20 12 20C11.4872 20 11.0645 19.614 11.0067 19.1166L11 19V7.415L7.70711 10.7071C7.34662 11.0676 6.77939 11.0953 6.3871 10.7903L6.29289 10.7071C5.93241 10.3466 5.90468 9.77939 6.2097 9.3871L6.29289 9.29289L11.2929 4.29289C11.6534 3.93241 12.2206 3.90468 12.6129 4.2097Z" fill="#FFBD21"/>
-              </svg>
-            </div>
-          </div>
-        </article>
-      </div>
-    </section>
-  </div>
+            <hr>
+            <Title
+                class="calendar__title"
+                :data="{
+                    title: 'September 18, 2020',
+                    size: 'small',
+                    isHighLeading: true,
+                    marginBottom: 'medium',
+                }"
+            />
 
+            <div class="calendar__events">
+                <article
+                    class="event-label calendar__event"
+                    v-for="index in 4"
+                    :key="index"
+                >
+                    <div class="event-label__content">
+                        <Title
+                            :data="{
+                                title: 'Marc’s Birthday',
+                                size: 'small',
+                                isHighLeading: true,
+                            }"
+                        />
+                        <div class="event-label__status">
+                            <span class="event-label__time">2h</span>
+                            <IconBase
+                                :data="{
+                                    iconName: 'arrowDown',
+                                }"
+                            />
+                        </div>
+                    </div>
+                </article>
+            </div>
+
+            <BottomSheet
+                :data="{
+                    title: 'Time',
+                    open: false,
+                }"
+            >
+                <template #content>
+                    <div class="date-selector">
+                        <TimePicker
+                            :data="{
+                                source: generateHours(),
+                                count: 20,
+                                value: 13,
+                                sensitivity: 0.8,
+                            }"
+                        />
+                        <TimePicker
+                            :data="{
+                                source: generateMinutes(),
+                                count: 20,
+                                sensitivity: 0.8,
+                                value: 11,
+                            }"
+                            @onChange="console.log($event)"
+                        />
+                    </div>
+                </template>
+            </BottomSheet>
+        </section>
+    </div>
 </template>
 
 <script setup lang="ts">
-import { useRouter } from 'vue-router'
-import { NavigationToggle } from '@/features/navigation'
-import { DataPiker } from '@/shared/ui/data-picker'
-import { Title } from '@/shared/ui/title'
+import { useRouter } from 'vue-router';
+import { DataPiker } from '@/shared/ui/data-picker';
+import { Title } from '@/shared/ui/title';
+import { IconBase } from '@/shared/ui/icon-base';
+import { getEventForMonth } from '@/widgets/calendar/api';
+import { TimePicker } from '@/shared/ui/time-picker';
+import { BottomSheet } from '@/entities/bottom-sheet';
 
-const router = useRouter()
-const goToHome = () => {
-  router.push({ path: '/' })
-}
+const router = useRouter();
+const generateHours = () => new Array(24).fill(1).map((v, i) => ({ value: i, text: i }));
 
+const generateMinutes = () => new Array(60).fill(1).map((v, i) => ({ value: i, text: i }));
+
+const state = reactive({
+  events: new Map()
+});
+
+onMounted(async () => {
+  state.events = await getEventForMonth();
+});
 </script>
-
 
 <style lang="scss">
   @import "style.module";
+
+  .date-selector {
+    display: flex;
+    justify-content: space-between;
+  }
 </style>

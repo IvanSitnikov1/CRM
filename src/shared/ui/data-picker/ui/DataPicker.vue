@@ -4,6 +4,7 @@
       <transition name="fade" mode="out-in">
         <Title :key="curentMonth"
                class="date-picker__title"
+               ref="reference"
                :data="{
                   title: curentMonth,
                   size: 'medium',
@@ -39,7 +40,9 @@
           <tr v-for="(row, index) in curentDates" :key="index" class="date-picker__days">
             <td v-for="date in row" :key="date.day" :class="getDateClasses(date)">
               {{ date.day }}
-              <div class="date-picker__event" v-for="index in 4" :key="index"/>
+              <div class="date-picker__event"
+                   v-for="index in getCountOfEventInDay(date.timestamp)"
+                   :key="index"/>
             </td>
           </tr>
         </tbody>
@@ -50,10 +53,15 @@
 </template>
 
 <script setup lang="ts">
-import { type ILink } from '../../link';
+import { type IDatePicker } from '../../link'
 import { Title } from '@/shared/ui/title';
 import { Calendar, DateInfo } from "./../index";
-import IconBase from "@/shared/ui/icon-base/ui/IconBase.vue";
+import { IconBase } from '@/shared/ui/icon-base'
+import { useFloating } from '@floating-ui/vue'
+
+const reference = ref(null);
+const floating = ref(null);
+const {floatingStyles} = useFloating(reference, floating);
 
 const calendar = reactive(new Calendar());
 const curentDates = computed(() => calendar.getCalendar());
@@ -68,8 +76,16 @@ const getDateClasses = (date: DateInfo) => {
   };
 };
 
+const getCountOfEventInDay = (timestamp: number) => {
+  if (props.data.events.has(timestamp)) {
+    return props.data.events.get(timestamp)
+  } else {
+    return 0
+  }
+}
+
 const props = defineProps<{
-  data: ILink
+  data: IDatePicker
 }>()
 
 </script>

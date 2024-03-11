@@ -55,7 +55,7 @@ const handleDown = (event: MouseEvent | TouchEvent) => {
 };
 
 const handleMove = (event: MouseEvent | TouchEvent) => {
-  if (!dragging.value && !event instanceof TouchEvent) {
+  if (!dragging.value) {
     return;
   }
   const clientY = event instanceof MouseEvent ? event.clientY : event.touches[0].clientY;

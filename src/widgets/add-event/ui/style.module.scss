@@ -1,0 +1,12 @@
+.add-task {
+  &__form {
+    padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 24px;
+  }
+  &__save {
+    margin-top: 20px;
+    padding: 0 20px;
+  }
+}
