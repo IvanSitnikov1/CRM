@@ -22,8 +22,8 @@
           </li>
         </ul>
         <div class="ios-select__highlight"
-             :style="`height: ${itemHeight}px;
-                 line-height: ${itemHeight}px;`">
+             :style="`height: 45px;
+                 line-height: 45px;`">
           <ul class="ios-select__highlight-list"
               :style="`top: -${itemHeight}px; transform: translate3d(0, ${-store.scroll * itemHeight}px, 0);`">
             <li
@@ -68,7 +68,7 @@ const props = defineProps<{
 }>()
 
 
-const itemHeight = 900 / 20;
+const itemHeight = 900 / props.data.count;
 const itemAngle = 360 / props.data.count;
 const radius = itemHeight / Math.tan((itemAngle * Math.PI) / 180);
 const a = props.data.sensitivity * 10;

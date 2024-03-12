@@ -46,7 +46,7 @@
             <BottomSheet
                 :data="{
                     title: 'Time',
-                    open: false,
+                    open: true,
                 }"
             >
                 <template #content>
@@ -54,7 +54,7 @@
                         <TimePicker
                             :data="{
                                 source: generateHours(),
-                                count: 20,
+                                count: 24,
                                 value: 13,
                                 sensitivity: 0.8,
                             }"
