@@ -18,43 +18,40 @@
                         title: 'Event Name',
                         placeholder: 'Event Name',
                         name: 'event',
+                        value: '',
                     }"
                 />
                 <UISelect
                     :data="{
-                        text: '',
+                        title: 'Event Category',
+                        name: 'category',
+                        options: [],
                     }"
                 />
                 <UISelect
                     :data="{
-                        text: '',
+                        title: 'Priority',
+                        name: 'priority',
+                        options: [],
                     }"
                 />
+                <InputTime />
                 <UIInput
                     :data="{
                         type: 'text',
-                        title: 'Task Name',
+                        title: 'Date',
                         placeholder: '1:00 AM',
                         iconName: 'clock',
                         isReadonly: true,
                         name: 'task',
-                    }"
-                />
-                <UIInput
-                    :data="{
-                        type: 'text',
-                        title: 'Task Name',
-                        placeholder: '1:00 AM',
-                        iconName: 'clock',
-                        isReadonly: true,
-                        name: 'task',
+                        value: '',
                     }"
                 />
                 <UiTextArea
                     :data="{
-                        name: 'task',
+                        name: 'event',
                         title: 'Description',
-                        placeholder: 'Add some description of the request',
+                        placeholder: 'Add some description of the event',
                     }"
                 />
             </form>
@@ -80,9 +77,9 @@ import { UiButton } from '@/shared/ui/button';
 import { UISelect } from '@/shared/ui/select';
 import { lock, unlock } from '@/shared/lib/ustils/isBlockScroll';
 import { useModalStore } from '@/entities/add-modal';
-import { Link } from '@/shared/ui/link';
 import { UIInput } from '@/shared/ui/input';
 import { UiTextArea } from '@/shared/ui/textarea';
+import { InputTime } from '@/shared/ui/time-picker'
 
 const modalStore = useModalStore();
 

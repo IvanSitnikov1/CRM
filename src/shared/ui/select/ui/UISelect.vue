@@ -1,19 +1,18 @@
 <template>
   <article>
-    <label for="format" class="select__label">Request Subject</label>
+    <label :for="data.name" class="label select__label">{{ data.title }}</label>
     <div class="select__container">
       <select class="select"
-              name="format"
-              id="format"
+              :name="data.name"
+              :id="data.name"
               :multiple="data.isMultipleSelect"
               @focus="handleFocus"
               @blur="handleBlur"
       >
-        <option value="pdf">PDF</option>
-        <option value="txt">txt</option>
-        <option value="epub">ePub</option>
-        <option value="fb2">fb2</option>
-        <option value="mobi">mobi</option>
+        <option v-for="option in data.options"
+                :value="option.value">
+          {{ option.title }}
+        </option>
       </select>
       <IconBase
         class="select__icon"
@@ -27,11 +26,11 @@
 </template>
 
 <script setup lang="ts">
-import { type ITag } from './../index'
+import { type ISelect } from './../index'
 import IconBase from "@/shared/ui/icon-base/ui/IconBase.vue";
 
 const props = defineProps<{
-  data: ITag
+  data: ISelect
 }>()
 
 const state = reactive({

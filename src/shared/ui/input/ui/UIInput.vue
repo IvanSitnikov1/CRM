@@ -1,6 +1,6 @@
 <template>
   <article class="input__content">
-    <label :for="data.name" class="input__label">
+    <label :for="data.name" class="label input__label">
       {{ data.title}}
     </label>
     <div class="input">

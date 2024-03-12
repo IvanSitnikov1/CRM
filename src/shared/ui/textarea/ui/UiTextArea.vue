@@ -1,6 +1,6 @@
 <template>
   <article class="textarea">
-    <label :for="data.name" class="textarea__label">
+    <label :for="data.name" class="label textarea__label">
       {{ data.title}}
     </label>
     <textarea

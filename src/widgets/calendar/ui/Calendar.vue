@@ -42,35 +42,6 @@
                     </div>
                 </article>
             </div>
-
-            <BottomSheet
-                :data="{
-                    title: 'Time',
-                    open: true,
-                }"
-            >
-                <template #content>
-                    <div class="date-selector">
-                        <TimePicker
-                            :data="{
-                                source: generateHours(),
-                                count: 24,
-                                value: 13,
-                                sensitivity: 0.8,
-                            }"
-                        />
-                        <TimePicker
-                            :data="{
-                                source: generateMinutes(),
-                                count: 20,
-                                sensitivity: 0.8,
-                                value: 11,
-                            }"
-                            @onChange="console.log($event)"
-                        />
-                    </div>
-                </template>
-            </BottomSheet>
         </section>
     </div>
 </template>
@@ -85,9 +56,7 @@ import { TimePicker } from '@/shared/ui/time-picker';
 import { BottomSheet } from '@/entities/bottom-sheet';
 
 const router = useRouter();
-const generateHours = () => new Array(24).fill(1).map((v, i) => ({ value: i, text: i }));
 
-const generateMinutes = () => new Array(60).fill(1).map((v, i) => ({ value: i, text: i }));
 
 const state = reactive({
   events: new Map()

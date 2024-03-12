@@ -1,54 +1,62 @@
 <template>
-      <article class="ios-select__select-wrap"
-               v-if="props.data.source.length"
-               ref="selectWrapRef"
-               @touchstart.prevent="handleTouchStart"
-               @touchmove.prevent="handleTouchMove"
-               @touchend.prevent="handleTouchEnd">
-        <ul class="ios-select__select-options"
-            :style="`transform: translate3d(0, 0, ${-radius}px) rotateX(${itemAngle * store.scroll}deg);`">
-          <li
-            v-for="(item, index) in props.data.source"
-            :key="index"
-            class="ios-select__select-option"
-            :style="`top: ${itemHeight * -0.5}px;
+  <article
+    class="ios-select__select-wrap"
+    v-if="props.data.source.length"
+    ref="selectWrapRef"
+    @touchstart.prevent="handleTouchStart"
+    @touchmove.prevent="handleTouchMove"
+    @touchend.prevent="handleTouchEnd"
+  >
+    <ul
+      class="ios-select__select-options"
+      :style="`transform: translate3d(0, 0, ${-radius}px) rotateX(${itemAngle * store.scroll}deg);`"
+    >
+      <li
+        v-for="(item, index) in props.data.source"
+        :key="index"
+        class="ios-select__select-option"
+        :style="`top: ${itemHeight * -0.5}px;
                 height: ${itemHeight}px;
                 line-height: ${itemHeight}px;
                 transform: rotateX(${-itemAngle * index}deg) translate3d(0, 0, ${radius}px);`"
-            :data-index="index"
-            v-show="isWithinRange(index)"
-          >
-            {{ item.text }}
-          </li>
-        </ul>
-        <div class="ios-select__highlight"
-             :style="`height: 45px;
-                 line-height: 45px;`">
-          <ul class="ios-select__highlight-list"
-              :style="`top: -${itemHeight}px; transform: translate3d(0, ${-store.scroll * itemHeight}px, 0);`">
-            <li
-              class="ios-select__highlight-item"
-              :style="`height: ${itemHeight}px`"
-            >
-              {{ props.data.source[props.data.source.length - 1].text }}
-            </li>
-            <li
-              v-for="(item, index) in props.data.source"
-              :key="index"
-              class="ios-select__highlight-item"
-              :style="`height: ${itemHeight}px;`"
-            >
-              {{ item.text }}
-            </li>
-            <li
-              class="ios-select__highlight-item"
-              :style="`height: ${itemHeight}px;`"
-            >
-              {{ props.data.source[0].text }}
-            </li>
-          </ul>
-        </div>
-      </article>
+        :data-index="index"
+        v-show="isWithinRange(index)"
+      >
+        {{ item.text }}
+      </li>
+    </ul>
+    <div
+      class="ios-select__highlight"
+      :style="`height: 45px;
+                 line-height: 45px;`"
+    >
+      <ul
+        class="ios-select__highlight-list"
+        :style="`top: -${itemHeight}px; transform: translate3d(0, ${-store.scroll * itemHeight}px, 0);`"
+      >
+        <li
+          class="ios-select__highlight-item"
+          :style="`height: ${itemHeight}px`"
+        >
+          {{ props.data.source[props.data.source.length - 1].text }}
+        </li>
+        <li
+          v-for="(item, index) in props.data.source"
+          :key="index"
+          class="ios-select__highlight-item"
+          :style="`height: ${itemHeight}px;`"
+        >
+          {{ item.text }}
+        </li>
+        <li
+          class="ios-select__highlight-item"
+          :style="`height: ${itemHeight}px;`"
+        >
+          {{ props.data.source[0].text }}
+        </li>
+      </ul>
+    </div>
+  </article>
 </template>
 
 <script setup lang="ts">
