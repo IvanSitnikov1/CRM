@@ -3,4 +3,6 @@ export interface IIosSelect {
   count: number
   source: { text: string | number; value: any }[];
   sensitivity: number;
+  minScrollValue?: number;
+  maxScrollValue?: number;
 }

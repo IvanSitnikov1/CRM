@@ -142,7 +142,11 @@ const normalizeScroll = (scroll) => {
   while (normalizedScroll < 0) {
     normalizedScroll += props.data.source.length;
   }
-  return normalizedScroll % props.data.source.length;
+  normalizedScroll = normalizedScroll % props.data.source.length;
+  const isLimit = props.data.minScrollValue && props.data.maxScrollValue
+  return isLimit
+    ? Math.min(Math.max(normalizedScroll, props.data.minScrollValue), props.data.maxScrollValue)
+    : normalizedScroll
 };
 const animateMoveByInitV = async (initV) => {
   const acceleration = initV > 0 ? -a : a; // Deceleration or acceleration

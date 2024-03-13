@@ -55,7 +55,7 @@ const handleDown = (event: MouseEvent | TouchEvent) => {
 };
 
 const handleMove = (event: MouseEvent | TouchEvent) => {
-  if (!dragging.value && false) {
+  if (!dragging.value || props.data.notDraggable) {
     return;
   }
   const clientY = event instanceof MouseEvent ? event.clientY : event.touches[0].clientY;
