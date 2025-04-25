@@ -1,0 +1,13 @@
+services:
+  postgres:
+    image: postgres:latest
+    container_name: postgres_crm
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin
+      POSTGRES_DB: crm
+    volumes:
+      - /home/ivan/docker_volumes/postgres_crm/data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    restart: always
