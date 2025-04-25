@@ -2,8 +2,7 @@ from logging.config import fileConfig
 from sqlalchemy import pool
 from sqlalchemy.ext.asyncio import create_async_engine
 from alembic import context
-# from api.models.auth_models import Base
-# from api.models.settings_models import Base
+from api.models.users import Base
 from api.configs.database import settings
 import asyncio
 
