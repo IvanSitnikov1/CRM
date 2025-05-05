@@ -8,7 +8,10 @@ from api.configs.database import Base
 if TYPE_CHECKING:
     from api.models.projects import Project, Task
 
+
 class User(SQLAlchemyBaseUserTable, Base):
+    """Модель таблицы пользователей"""
+
     __tablename__ = 'users'
 
     id: Mapped[int] = mapped_column(Integer, primary_key=True)
@@ -25,5 +28,13 @@ class User(SQLAlchemyBaseUserTable, Base):
 
     owned_projects: Mapped[list['Project']] = relationship('Project', back_populates='author')
     participating_projects: Mapped[list['Project']] = relationship('Project', back_populates='participants')
-    created_tasks: Mapped[list['Task']] = relationship('Task', back_populates='author')
-    assigned_tasks: Mapped[list['Task']] = relationship('Task', back_populates='executor')
+    created_tasks: Mapped[list['Task']] = relationship(
+        'Task',
+        back_populates='author',
+        foreign_keys='Task.author_id',
+    )
+    assigned_tasks: Mapped[list['Task']] = relationship(
+        'Task',
+        back_populates='executor',
+        foreign_keys='Task.executor_id',
+    )

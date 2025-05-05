@@ -3,6 +3,7 @@ from sqlalchemy import pool
 from sqlalchemy.ext.asyncio import create_async_engine
 from alembic import context
 from api.models.users import Base
+from api.models.projects import Base
 from api.configs.database import settings
 import asyncio
 
