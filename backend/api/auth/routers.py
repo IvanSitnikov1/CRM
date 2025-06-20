@@ -1,14 +1,16 @@
+from fastapi import APIRouter
 from fastapi_users import FastAPIUsers
 
 from api.models.users import User
 from api.auth.users import auth_backend, get_user_manager
-from api.routers.user_router import user_router
-from api.schemas.users import SUserRead, SUserCreate, SUserUpdate
+from api.auth.schemas import SUserRead, SUserCreate, SUserUpdate
 
 fastapi_users = FastAPIUsers[User, int](
     get_user_manager,
     [auth_backend],
 )
+
+user_router = APIRouter(prefix="/api/v1/users", tags=["Пользовательский"])
 
 # Роут для логина (JWT)
 user_router.include_router(

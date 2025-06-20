@@ -1,8 +1,8 @@
 """create tables
 
-Revision ID: 5ccc0e3da9b4
+Revision ID: 37a82abfd57b
 Revises: 
-Create Date: 2025-05-05 14:48:54.033647
+Create Date: 2025-06-20 14:19:06.533484
 
 """
 from typing import Sequence, Union
@@ -12,7 +12,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision: str = '5ccc0e3da9b4'
+revision: str = '37a82abfd57b'
 down_revision: Union[str, None] = None
 branch_labels: Union[str, Sequence[str], None] = None
 depends_on: Union[str, Sequence[str], None] = None
@@ -35,7 +35,7 @@ def upgrade() -> None:
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('first_name', sa.String(length=100), nullable=False),
     sa.Column('last_name', sa.String(length=100), nullable=False),
-    sa.Column('photo', sa.String(length=255), nullable=False),
+    sa.Column('photo', sa.String(length=255), nullable=True),
     sa.Column('position', sa.String(length=100), nullable=True),
     sa.Column('company', sa.String(length=100), nullable=True),
     sa.Column('birthday_date', sa.Date(), nullable=True),
@@ -56,6 +56,7 @@ def upgrade() -> None:
     sa.Column('descriptions', sa.String(), nullable=False),
     sa.Column('number', sa.String(length=20), nullable=False),
     sa.Column('created_at', sa.Date(), nullable=False),
+    sa.Column('end_date', sa.Date(), nullable=False),
     sa.Column('priority_id', sa.Integer(), nullable=False),
     sa.Column('author_id', sa.Integer(), nullable=False),
     sa.ForeignKeyConstraint(['author_id'], ['users.id'], ),
@@ -69,12 +70,12 @@ def upgrade() -> None:
     sa.Column('descriptions', sa.String(), nullable=True),
     sa.Column('is_active', sa.Boolean(), nullable=False),
     sa.Column('status', sa.String(length=50), nullable=False),
+    sa.Column('planned_duration', sa.Integer(), nullable=False),
+    sa.Column('actual_duration', sa.Integer(), nullable=False),
     sa.Column('priority_id', sa.Integer(), nullable=False),
-    sa.Column('acting_position_id', sa.Integer(), nullable=False),
     sa.Column('executor_id', sa.Integer(), nullable=False),
     sa.Column('author_id', sa.Integer(), nullable=False),
     sa.Column('project_id', sa.Integer(), nullable=False),
-    sa.ForeignKeyConstraint(['acting_position_id'], ['positions.id'], ),
     sa.ForeignKeyConstraint(['author_id'], ['users.id'], ),
     sa.ForeignKeyConstraint(['executor_id'], ['users.id'], ),
     sa.ForeignKeyConstraint(['priority_id'], ['priorities.id'], ),
