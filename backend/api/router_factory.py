@@ -4,10 +4,11 @@ from api.DTO.factories.router_factory import RouteDTO
 
 
 class RouterFactory:
-    def __init__(self, prefix: str, tags: list[str], routes: list[RouteDTO]):
+    def __init__(self, prefix: str, tags: list[str], routes: list[RouteDTO] | None = None):
         self.router = APIRouter(prefix=prefix, tags=tags)
         self.routes = routes
-        self._setup_router()
+        if routes:
+            self._setup_router()
 
     def _setup_router(self):
         for route in self.routes:

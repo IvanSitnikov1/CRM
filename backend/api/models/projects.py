@@ -1,9 +1,10 @@
 from typing import TYPE_CHECKING
 if TYPE_CHECKING:
-    from api.models.users import User, ProjectParticipant
+    from api.models.users import User
 
 from sqlalchemy import String, Integer, Date, Boolean, func, ForeignKey
 from sqlalchemy.orm import Mapped, mapped_column, relationship
+from sqlalchemy.ext.hybrid import hybrid_property
 
 from api.configs.database import Base
 
@@ -13,13 +14,12 @@ class Project(Base):
     __tablename__ = 'projects'
 
     id: Mapped[int] = mapped_column(Integer, primary_key=True)
-    name: Mapped[str] = mapped_column(String(50))
+    name: Mapped[str] = mapped_column(String(50), unique=True)
     descriptions: Mapped[str] = mapped_column(String)
     number: Mapped[str] = mapped_column(String(20), unique=True)
     created_at: Mapped[Date] = mapped_column(Date, default=func.now())
     end_date: Mapped[Date] = mapped_column(Date)
-    sum_actual_duration: Mapped[int] = mapped_column(Integer, default=0, nullable=False)
-    priority_id: Mapped[str] = mapped_column(ForeignKey('priorities.id'))
+    priority_id: Mapped[int] = mapped_column(ForeignKey('priorities.id'))
     author_id: Mapped[int] = mapped_column(ForeignKey('users.id'))
 
     # Автор проекта
@@ -37,7 +37,15 @@ class Project(Base):
         viewonly=True  # Только для чтения, изменения через ProjectParticipant
     )
 
-    tasks: Mapped[list['Task']] = relationship('Task', back_populates='project')
+    tasks: Mapped[list['Task']] = relationship(
+        'Task',
+        back_populates='project',
+        cascade='all, delete-orphan'
+    )
+
+    @hybrid_property
+    def calculated_duration(self) -> int:
+        return sum(task.actual_duration or 0 for task in self.tasks)
 
 
 class Task(Base):
@@ -48,11 +56,11 @@ class Task(Base):
     name: Mapped[str] = mapped_column(String(50))
     descriptions: Mapped[str] = mapped_column(String, nullable=True)
     is_active: Mapped[bool] = mapped_column(Boolean, default=True)
-    status: Mapped[str] = mapped_column(String(50))
-    planned_duration: Mapped[int] = mapped_column(Integer, default=0, nullable=False)
-    actual_duration: Mapped[int] = mapped_column(Integer, default=0, nullable=False)
-    priority_id: Mapped[str] = mapped_column(ForeignKey('priorities.id'))
-    executor_id: Mapped[int] = mapped_column(ForeignKey('users.id'))
+    status_id: Mapped[int] = mapped_column(ForeignKey('status_tasks.id'), default=1)
+    planned_duration: Mapped[int] = mapped_column(Integer)
+    actual_duration: Mapped[int] = mapped_column(Integer, nullable=True)
+    priority_id: Mapped[int] = mapped_column(ForeignKey('priorities.id'))
+    executor_id: Mapped[int] = mapped_column(ForeignKey('users.id'), nullable=True)
     author_id: Mapped[int] = mapped_column(ForeignKey('users.id'))
     project_id: Mapped[int] = mapped_column(ForeignKey('projects.id'))
 
@@ -80,6 +88,14 @@ class Position(Base):
 class Priority(Base):
     """Модель таблицы приоритетов"""
     __tablename__ = 'priorities'
+
+    id: Mapped[int] = mapped_column(Integer, primary_key=True)
+    name: Mapped[str] = mapped_column(String(100))
+
+
+class StatusTask(Base):
+    """Модель таблицы статусов задач."""
+    __tablename__ = 'status_tasks'
 
     id: Mapped[int] = mapped_column(Integer, primary_key=True)
     name: Mapped[str] = mapped_column(String(100))

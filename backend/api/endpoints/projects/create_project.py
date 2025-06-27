@@ -1,18 +1,17 @@
 from fastapi import Depends
-from sqlalchemy.ext.asyncio import AsyncSession
 
-from api.configs.database import get_async_session
-from api.DTO.endpoints.projects.create_project import ProjectCreateDTO, ProjectCreateResponseDTO
-from api.models.projects import Project
+from api.configs.get_obj_db import get_project_repo
+from api.DTO.endpoints.projects.create_project import (
+    ProjectCreateDTO, ProjectCreateResponseDTO, ProjectCreateReadResponseDTO)
+from api.db.project_repository import ProjectDatabaseRepository
 
 
 async def create_project(
-        project_data: ProjectCreateDTO,
-        session: AsyncSession = Depends(get_async_session),
+    project_data: ProjectCreateDTO,
+    project_repo: ProjectDatabaseRepository = Depends(get_project_repo),
 ):
-    new_project = Project(**project_data.model_dump())
-    session.add(new_project)
-    await session.commit()
-    await session.refresh(new_project)
-    return new_project
-    # return ProjectCreateResponseDTO(new_project)
+    new_project = await project_repo.create(project_data)
+    return ProjectCreateReadResponseDTO(
+        detail='Проект создан успешно',
+        data=ProjectCreateResponseDTO.model_validate(new_project),
+    )

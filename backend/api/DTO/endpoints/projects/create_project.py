@@ -1,6 +1,6 @@
 from datetime import date
 
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, ConfigDict
 
 
 class ProjectCreateDTO(BaseModel):
@@ -8,10 +8,15 @@ class ProjectCreateDTO(BaseModel):
     descriptions: str | None = Field(None)
     number: str
     end_date: date
-    priority_id: int
+    priority_id: int = Field(1)
     author_id: int
 
 
 class ProjectCreateResponseDTO(ProjectCreateDTO):
     id: int
-    sum_actual_duration: int
+
+    model_config = ConfigDict(from_attributes=True)
+
+class ProjectCreateReadResponseDTO(BaseModel):
+    detail: str
+    data: ProjectCreateResponseDTO
